@@ -20,9 +20,9 @@ public class Route {
 	private int duration;
 	private int cost;
 	@OneToMany(mappedBy="route")
-	List<Flight> flight;
+	private List<Flight> flight;
 	@OneToMany(mappedBy="schedule")
-	List<Schedule> schedule;
+	private List<Schedule> schedule;
 	
 	public List<Schedule> getSchedule() {
 		return schedule;
