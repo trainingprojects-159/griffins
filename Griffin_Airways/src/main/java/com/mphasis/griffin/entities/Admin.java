@@ -8,7 +8,7 @@ public class Admin {
 	@Id
 	private String userId;
 	private String password;
-	public String getUserId() {
+	public String getUser_id() {
 		return userId;
 	}
 	public void setUserId(String userId) {
@@ -19,6 +19,10 @@ public class Admin {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "AdminSignIn [userId=" + userId + ", password=" + password + "]";
 	}
 	
 }
