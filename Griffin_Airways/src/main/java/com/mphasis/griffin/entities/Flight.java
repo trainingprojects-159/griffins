@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int flightId;
+	private String flightId;
 	private String fname;
 	private int reserveSeat;
 	private int seatCap;
@@ -40,11 +40,11 @@ public class Flight {
 		this.route = route;
 	}
 
-	public int getFlightId() {
+	public String getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(int flightId) {
+	public void setFlightId(String flightId) {
 		this.flightId = flightId;
 	}
 
