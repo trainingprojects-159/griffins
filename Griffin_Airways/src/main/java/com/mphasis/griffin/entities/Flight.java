@@ -20,8 +20,7 @@ public class Flight {
  @ManyToOne
  private Route route;
  @OneToMany(mappedBy="flight")
-List<Schedule> schedule; 
- 
+ List <Schedule> schedule; 
 public List<Schedule> getSchedule() {
 	return schedule;
 }
