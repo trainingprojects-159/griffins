@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class AdminSignIn {
+public class Admin {
 	@Id
 	private String userId;
 	private String password;
-	public String getUser_id() {
+	public String getUserId() {
 		return userId;
 	}
 	public void setUserId(String userId) {
@@ -19,10 +19,6 @@ public class AdminSignIn {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	@Override
-	public String toString() {
-		return "AdminSignIn [userId=" + userId + ", password=" + password + "]";
 	}
 	
 }

@@ -72,10 +72,5 @@ public class SignUp {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "SignUp [userId=" + userId + ", uname=" + uname + ", address=" + address + ", gender=" + gender
-				+ ", contact=" + contact + ", dob=" + dob + ", email=" + email + ", nic=" + nic + ", password="
-				+ password + "]";
-	}
+	
 }
