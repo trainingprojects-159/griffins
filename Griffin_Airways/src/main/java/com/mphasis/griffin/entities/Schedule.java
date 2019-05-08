@@ -44,7 +44,7 @@ public class Schedule {
 		this.scheId = scheId;
 	}
 
-	
+
 
 	public String getScheDate() {
 		return scheDate;
@@ -56,7 +56,9 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [scheId=" + scheId + " scheDate="
+
+		return "Schedule [scheId=" + scheId +  ", scheDate="
+
 				+ scheDate + ", flight=" + flight + ", route=" + route + "]";
 	}
 
