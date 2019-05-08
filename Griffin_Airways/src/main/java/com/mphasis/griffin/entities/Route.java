@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -14,8 +16,13 @@ public class Route {
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int routeId;
-	private String source;
-	private String destination;
+	@ManyToOne
+	@JoinColumn(name="source_id")
+	private Location source;
+	
+	@ManyToOne
+	@JoinColumn(name="destination_id")
+	private Location destination;
 	private int distance;
 	private int duration;
 	private int cost;
@@ -48,21 +55,7 @@ public class Route {
 		this.routeId = routeId;
 	}
 
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
+	
 
 	public int getDistance() {
 		return distance;
@@ -88,11 +81,30 @@ public class Route {
 		this.cost = cost;
 	}
 
+	public Location getSource() {
+		return source;
+	}
+
+	public void setSource(Location source) {
+		this.source = source;
+	}
+
+	public Location getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Location destination) {
+		this.destination = destination;
+	}
+
 	@Override
 	public String toString() {
 		return "Route [routeId=" + routeId + ", source=" + source + ", destination=" + destination + ", distance="
 				+ distance + ", duration=" + duration + ", cost=" + cost + ", flight=" + flight + ", schedule="
 				+ schedule + "]";
 	}
+
+	
+	
 
 }
