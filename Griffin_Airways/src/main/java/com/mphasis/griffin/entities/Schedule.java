@@ -44,21 +44,7 @@ public class Schedule {
 		this.scheId = scheId;
 	}
 
-	public String getFlightId() {
-		return flightId;
-	}
-
-	public void setFlightId(String flightId) {
-		this.flightId = flightId;
-	}
-
-	public String getRouteId() {
-		return routeId;
-	}
-
-	public void setRouteId(String routeId) {
-		this.routeId = routeId;
-	}
+	
 
 	public String getScheDate() {
 		return scheDate;
@@ -70,7 +56,7 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [scheId=" + scheId + ", flightId=" + flightId + ", routeId=" + routeId + ", scheDate="
+		return "Schedule [scheId=" + scheId +  ", scheDate="
 				+ scheDate + ", flight=" + flight + ", route=" + route + "]";
 	}
 
