@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Passenger_Info {
+public class PassengerInfo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private int passId;
