@@ -1,5 +1,7 @@
 package com.mphasis.griffin.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +12,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Flight {
 @Id
-
-
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
  private int flightId;
  private String fname;
@@ -20,8 +20,17 @@ public class Flight {
  @ManyToOne
  private Route route;
  @OneToMany(mappedBy="flight")
+List<Schedule> schedule; 
  
- 
+public List<Schedule> getSchedule() {
+	return schedule;
+}
+public void setSchedule(List<Schedule> schedule) {
+	this.schedule = schedule;
+}
+public Route getRoute() {
+	return route;
+}
 public void setRoute(Route route) {
 	this.route = route;
 }
@@ -52,7 +61,9 @@ public void setSeatCap(int seatCap) {
 @Override
 public String toString() {
 	return "Flight [flightId=" + flightId + ", fname=" + fname + ", reserveSeat=" + reserveSeat + ", seatCap=" + seatCap
-			+ "]";
+			+ ", route=" + route + ", schedule=" + schedule + "]";
 }
 
 }
+
+

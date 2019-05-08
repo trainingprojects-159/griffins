@@ -16,6 +16,18 @@ public class Schedule {
 	private String scheDate;
 	@ManyToOne
 	private Flight flight;
+	@ManyToOne
+	private Route route;
+	
+	public Route getRoute() {
+		return route;
+	}
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+	public Flight getFlight() {
+		return flight;
+	}
 	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
@@ -46,7 +58,7 @@ public class Schedule {
 	@Override
 	public String toString() {
 		return "Schedule [scheId=" + scheId + ", flightId=" + flightId + ", routeId=" + routeId + ", scheDate="
-				+ scheDate + "]";
+				+ scheDate + ", flight=" + flight + ", route=" + route + "]";
 	}
-	
-}
+
+	}

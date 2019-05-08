@@ -1,5 +1,7 @@
 package com.mphasis.griffin.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,22 @@ public class Route {
 	private int duration;
 	private int cost;
 	@OneToMany(mappedBy="route")
+	List<Flight> flight;
+	@OneToMany(mappedBy="schedule")
+	List<Schedule> schedule;
 	
+	public List<Schedule> getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(List<Schedule> schedule) {
+		this.schedule = schedule;
+	}
+	public List<Flight> getFlight() {
+		return flight;
+	}
+	public void setFlight(List<Flight> flight) {
+		this.flight = flight;
+	}
 	public int getRouteId() {
 		return routeId;
 	}
@@ -58,12 +75,8 @@ public class Route {
 	@Override
 	public String toString() {
 		return "Route [routeId=" + routeId + ", source=" + source + ", destination=" + destination + ", distance="
-				+ distance + ", duration=" + duration + ", cost=" + cost + "]";
+				+ distance + ", duration=" + duration + ", cost=" + cost + ", flight=" + flight + ", schedule="
+				+ schedule + "]";
 	}
-
 	
-	
-	
-	
-	
-}
+	}
