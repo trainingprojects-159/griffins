@@ -8,11 +8,11 @@ public interface ScheduleService {
 
 	public void addSchedule(Schedule schedule);
 
-	public void removeSchedule(int scheId);
+	public void removeSchedule(String scheId);
 
 	public void modifySchedule(Schedule schedule);
 
-	public Schedule getById(int scheId);
+	public Schedule getById(String scheId);
 	
 	public List<Schedule> getALl();
 }

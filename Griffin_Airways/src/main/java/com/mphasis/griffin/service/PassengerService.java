@@ -9,8 +9,8 @@ import com.mphasis.griffin.entities.PassengerInfo;
 public interface PassengerService {
 	public void addPassenger(PassengerInfo passenger);
 	public void updatePassenger(PassengerInfo passenger);
-	public void removePassenger(int passId);
-	public PassengerInfo getPassengerById(int passId);
+	public void removePassenger(String passId);
+	public PassengerInfo getPassengerById(String passId);
 	public List<PassengerInfo> getAllPassenger();
 
 

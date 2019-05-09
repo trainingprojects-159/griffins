@@ -29,7 +29,7 @@ public class PassengerServiceImpl implements PassengerService {
 		
 	}
 
-	public void removePassenger(int passId) {
+	public void removePassenger(String passId) {
 		passengerDao.deletePassenger(passId);
 		
 	}
