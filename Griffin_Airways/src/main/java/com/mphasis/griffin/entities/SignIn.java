@@ -6,12 +6,12 @@ import javax.persistence.Id;
 @Entity
 public class SignIn {
 	@Id
-	private int userId;
+	private String userId;
 	private String password;
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getPassword() {
