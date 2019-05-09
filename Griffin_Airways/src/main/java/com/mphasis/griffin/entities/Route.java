@@ -29,11 +29,11 @@ public class Route {
 					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String routeId;
 	@ManyToOne
-	@JoinColumn(name="source_id")
+	@JoinColumn(name="locId")
 	private Location source;
 	
 	@ManyToOne
-	@JoinColumn(name="destination_id")
+	@JoinColumn(name="locId")
 	private Location destination;
 	private int distance;
 	private int duration;
