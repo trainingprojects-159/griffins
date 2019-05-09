@@ -8,11 +8,11 @@ public interface LocationDao {
 	
 	public void insertLocation(Location location);
 
-	public void deleteLocation(int locId);
+	public void deleteLocation(String locId);
 
 	public void updateLocation(Location location);
 
-	public Location getById(int locId);
+	public Location getById(String locId);
 	
 	public Location getByName(String locName);
 

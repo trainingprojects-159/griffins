@@ -8,11 +8,11 @@ public interface LocationService {
 
 	public void addLocation(Location location);
 
-	public void removeLocation(int locId);
+	public void removeLocation(String locId);
 
 	public void modifyLocation(Location location);
 
-	public Location getById(int locId);
+	public Location getById(String locId);
 	
 	public Location getByName(String locName);
 

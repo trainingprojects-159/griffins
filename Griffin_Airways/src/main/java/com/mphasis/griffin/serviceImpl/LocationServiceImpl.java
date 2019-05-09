@@ -24,7 +24,7 @@ public class LocationServiceImpl implements LocationService {
 		locationDao.insertLocation(location);
 	}
 
-	public void removeLocation(int locId) {
+	public void removeLocation(String locId) {
 		locationDao.deleteLocation(locId);
 	}
 
@@ -32,7 +32,7 @@ public class LocationServiceImpl implements LocationService {
 		locationDao.updateLocation(location);
 	}
 
-	public Location getById(int locId) {
+	public Location getById(String locId) {
 
 		return locationDao.getById(locId);
 	}

@@ -28,28 +28,11 @@ public class LocationDaoImpl implements LocationDao {
 		tr.commit();
 	}
 
-	public void deleteLocation(int locId) {
-		Session session = sessionFactory.openSession();
-		Transaction tr = session.beginTransaction();
-		Location loc = (Location) session.get(Location.class, locId);
-		session.delete(loc);
-		tr.commit();
-	}
-
 	public void updateLocation(Location location) {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		session.update(location);
 		tr.commit();
-	}
-
-	public Location getById(int locId) {
-		Session session = sessionFactory.openSession();
-		Transaction tr = session.beginTransaction();
-		Location loc = (Location) session.get(Location.class, locId);
-		session.update(loc);
-		tr.commit();
-		return loc;
 	}
 
 	public Location getByName(String locName) {
@@ -67,6 +50,23 @@ public class LocationDaoImpl implements LocationDao {
 		List<Location> locs = session.createCriteria(Location.class).list();
 		tr.commit();
 		return locs;
+	}
+
+	public void deleteLocation(String locId) {
+		Session session = sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+		Location loc = (Location) session.get(Location.class, locId);
+		session.delete(loc);
+		tr.commit();
+	}
+
+	public Location getById(String locId) {
+		Session session = sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+		Location loc = (Location) session.get(Location.class, locId);
+		session.update(loc);
+		tr.commit();
+		return loc;
 	}
 
 }
