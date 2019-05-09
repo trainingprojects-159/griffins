@@ -10,11 +10,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
+
 @Entity
 public class Route {
 	@Id
 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "loc_seq")
+	@GenericGenerator(
+			name = "loc_seq",
+			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
+			parameters = {
+					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "RO"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String routeId;
 	@ManyToOne
 	@JoinColumn(name="source_id")

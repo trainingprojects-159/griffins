@@ -7,10 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
+
 @Entity
 public class Schedule {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sche_seq")
+	@GenericGenerator(
+			name = "sche_seq",
+			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
+			parameters = {
+					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "SI"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String scheId;
 	private String scheDate;
 	@ManyToOne
@@ -44,8 +56,6 @@ public class Schedule {
 		this.scheId = scheId;
 	}
 
-
-
 	public String getScheDate() {
 		return scheDate;
 	}
@@ -57,8 +67,8 @@ public class Schedule {
 	@Override
 	public String toString() {
 
-		return "Schedule [scheId=" + scheId +  ", scheDate="
 
+		return "Schedule [scheId=" + scheId +  ", scheDate="
 				+ scheDate + ", flight=" + flight + ", route=" + route + "]";
 	}
 
