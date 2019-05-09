@@ -73,9 +73,6 @@ public class Flight {
 		this.seatCap = seatCap;
 	}
 
-
-
-
 	@Override
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", fname=" + fname + ", reserveSeat=" + reserveSeat + ", seatCap="
