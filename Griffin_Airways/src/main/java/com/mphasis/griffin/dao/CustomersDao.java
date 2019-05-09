@@ -1,7 +1,7 @@
 package com.mphasis.griffin.dao;
 
-import com.mphasis.griffin.entities.SignUp;
+import com.mphasis.griffin.entities.Customers;
 
-public interface SignUpDao {
-	public int register(SignUp signUp);
+public interface CustomersDao {
+	public int register(Customers customers);
 }

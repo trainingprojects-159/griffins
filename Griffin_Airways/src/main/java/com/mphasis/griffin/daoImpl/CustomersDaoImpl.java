@@ -1,14 +1,13 @@
 package com.mphasis.griffin.daoImpl;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.mphasis.griffin.dao.SignUpDao;
-import com.mphasis.griffin.entities.SignUp;
+import com.mphasis.griffin.dao.CustomersDao;
+import com.mphasis.griffin.entities.Customers;
 
-public class SignUpDaoImpl implements SignUpDao{
+public class CustomersDaoImpl implements CustomersDao{
 	
 	@Autowired
 	SessionFactory sessionFactory;
@@ -17,10 +16,12 @@ public class SignUpDaoImpl implements SignUpDao{
 		this.sessionFactory = sessionFactory;
 	}
 
-	public int register(SignUp signUp) {
+	public int register(Customers customers) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("");
-		return 0;
+		Transaction tr=session.beginTransaction();
+		session.save(customers);
+		tr.commit();
+		session.close();
 	}
 	
 }
