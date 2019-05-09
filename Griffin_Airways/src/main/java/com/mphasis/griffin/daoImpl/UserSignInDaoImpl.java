@@ -20,7 +20,7 @@ public class UserSignInDaoImpl implements UserSignInDao{
 	
 	public SignIn signIn(String userId, String password) {
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from Puser where userId=:userId and password=:password");
+		Query query = session.createQuery("from SignIn where userId=:userId and password=:password");
 		query.setParameter("userId", userId);
 		query.setParameter("password", password);
 		SignIn signIn=(SignIn) query.uniqueResult();
