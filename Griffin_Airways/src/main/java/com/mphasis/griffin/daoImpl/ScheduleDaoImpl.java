@@ -13,14 +13,13 @@ import com.mphasis.griffin.entities.Schedule;
 
 @Repository
 public class ScheduleDaoImpl implements ScheduleDao {
-	
+
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
 
 	public void insertSchedule(Schedule schedule) {
 		Session session = sessionFactory.openSession();

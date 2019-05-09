@@ -83,6 +83,7 @@ public class AdminController {
 	public Route getRouteByID(@PathVariable("routeid")String routeid) {
 		return this.routeService.getByIdRoute(routeid);
 	}
+
 	@Autowired
 	LocationService locationService;
 
