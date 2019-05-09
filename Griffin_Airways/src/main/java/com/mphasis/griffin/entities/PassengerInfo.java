@@ -6,10 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Passenger_Info {
+public class PassengerInfo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int passId;
+	private String passId;
 	private String pname;
 	private String address;
 	private String gender;
@@ -19,10 +19,10 @@ public class Passenger_Info {
 	private String nic;
 	private String passport;
 	private String scheId;
-	public int getPassId() {
+	public String getPassId() {
 		return passId;
 	}
-	public void setPassId(int passId) {
+	public void setPassId(String passId) {
 		this.passId = passId;
 	}
 	public String getPname() {

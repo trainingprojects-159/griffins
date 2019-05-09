@@ -23,6 +23,7 @@ public class Flight {
 	private Route route;
 	@OneToMany(mappedBy = "flight")
 	private List<Schedule> schedule;
+<<<<<<< HEAD
 
 	public List<Schedule> getSchedule() {
 		return schedule;
@@ -73,6 +74,8 @@ public class Flight {
 	}
 
 
+
+
 	@Override
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", fname=" + fname + ", reserveSeat=" + reserveSeat + ", seatCap="
@@ -80,3 +83,4 @@ public class Flight {
 	}
 
 }
+

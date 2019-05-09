@@ -9,12 +9,12 @@ import javax.persistence.Id;
 public class Location {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-private int locId;
+private String locId;
 private String locName;
-public int getLocId() {
+public String getLocId() {
 	return locId;
 }
-public void setLocId(int locId) {
+public void setLocId(String locId) {
 	this.locId = locId;
 }
 public String getLocName() {
