@@ -2,11 +2,14 @@ package com.mphasis.griffin.daoImpl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.mphasis.griffin.dao.CustomersDao;
 import com.mphasis.griffin.entities.Customers;
 
+@Repository
 public class CustomersDaoImpl implements CustomersDao{
 	
 	@Autowired
@@ -15,13 +18,11 @@ public class CustomersDaoImpl implements CustomersDao{
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
-	public int register(Customers customers) {
+	public void register(Customers customers) {
 		Session session=sessionFactory.getCurrentSession();
 		Transaction tr=session.beginTransaction();
 		session.save(customers);
 		tr.commit();
 		session.close();
 	}
-	
 }
