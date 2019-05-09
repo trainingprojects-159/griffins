@@ -14,11 +14,14 @@ public class Schedule {
 	private String flightId;
 	private String routeId;
 	private String scheDate;
+	
 	@ManyToOne
 	private Flight flight;
+	
 	public void setFlight(Flight flight) {
 		this.flight = flight;
 	}
+	
 	public int getScheId() {
 		return scheId;
 	}
