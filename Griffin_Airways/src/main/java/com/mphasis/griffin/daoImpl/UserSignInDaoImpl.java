@@ -1,13 +1,15 @@
 package com.mphasis.griffin.daoImpl;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.mphasis.griffin.dao.UserSignInDao;
 import com.mphasis.griffin.entities.SignIn;
 
+@Repository
 public class UserSignInDaoImpl implements UserSignInDao{
 	@Autowired
 	SessionFactory sessionFactory;
