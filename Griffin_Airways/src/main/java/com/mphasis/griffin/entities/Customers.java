@@ -1,12 +1,16 @@
 package com.mphasis.griffin.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.hibernate.engine.internal.Cascade;
 
 import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
@@ -30,6 +34,9 @@ public class Customers {
 	private String email;
 	private String nic;
 	private String password;
+	
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private TicketInfo ticketInfo;
 	public String getUserId() {
 		return userId;
 	}

@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -33,7 +34,18 @@ public class TicketInfo {
  private int paymentId;
  private String seatInfo;
  private String passId;
- private String scheId;
+ @ManyToOne
+ @JoinColumn(name="userId")
+ private Customers customer;
+ 
+ public String getPassId() {
+	return passId;
+}
+public void setPassId(String passId) {
+	this.passId = passId;
+}
+
+private String scheId;
  private String status;
 public String getTicketId() {
 	return ticketId;
