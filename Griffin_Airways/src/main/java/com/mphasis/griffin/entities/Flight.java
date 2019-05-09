@@ -23,7 +23,7 @@ public class Flight {
 	private Route route;
 	@OneToMany(mappedBy = "flight")
 	private List<Schedule> schedule;
-<<<<<<< HEAD
+
 
 	public List<Schedule> getSchedule() {
 		return schedule;
