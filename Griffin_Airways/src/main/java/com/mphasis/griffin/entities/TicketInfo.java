@@ -5,17 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * @author kuppani.dinesh
- *
- */
+
 @Entity
 public class TicketInfo {
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
  private String ticketId;
  private int paymentId;
- private int seatInfo;
+ private String seatInfo;
  private String passId;
  private String scheId;
  private String status;
@@ -31,10 +28,10 @@ public int getPaymentId() {
 public void setPaymentId(int paymentId) {
 	this.paymentId = paymentId;
 }
-public int getSeatInfo() {
+public String getSeatInfo() {
 	return seatInfo;
 }
-public void setSeatInfo(int seatInfo) {
+public void setSeatInfo(String seatInfo) {
 	this.seatInfo = seatInfo;
 }
 public String getPassengerId() {
