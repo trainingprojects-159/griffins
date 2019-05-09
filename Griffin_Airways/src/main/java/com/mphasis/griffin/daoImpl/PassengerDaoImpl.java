@@ -29,7 +29,7 @@ SessionFactory sessionFactory;
 		
 	}
 
-	public void deletePassenger(int passId) {
+	public void deletePassenger(String passId) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		PassengerInfo p=(PassengerInfo)session.get(PassengerInfo.class,passId);
@@ -48,7 +48,7 @@ SessionFactory sessionFactory;
 		
 	}
 
-	public PassengerInfo getPassengerById(int passId) {
+	public PassengerInfo getPassengerById(String passId) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		PassengerInfo p=(PassengerInfo)session.get(PassengerInfo.class,passId);

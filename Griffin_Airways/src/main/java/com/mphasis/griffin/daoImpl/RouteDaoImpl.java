@@ -30,7 +30,7 @@ public class RouteDaoImpl implements RouteDao {
 		tr.commit();
 	}
 
-	public void deleteRoute(int routeid) {
+	public void deleteRoute(String routeid) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Route r=(Route)session.get(Route.class,routeid);
@@ -47,7 +47,7 @@ public class RouteDaoImpl implements RouteDao {
 ;
 	}
 
-	public Route getRouteById(int routeid) {
+	public Route getRouteById(String routeid) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Route r=(Route)session.get(Route.class, routeid);	

@@ -8,9 +8,9 @@ public interface PassengerDao {
 
 	public void insertPassenger(PassengerInfo p);
 	public void updatePassenger(PassengerInfo p);
-	public void deletePassenger(int passId);
+	public void deletePassenger(String passId);
 	public List<PassengerInfo> getAllPassenger();
-	public PassengerInfo getPassengerById(int passId);
+	public PassengerInfo getPassengerById(String passId);
 	
 
 }
