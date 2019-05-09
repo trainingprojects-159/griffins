@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
+
 /**
  * @author kuppani.dinesh
  *
@@ -12,7 +17,14 @@ import javax.persistence.Id;
 @Entity
 public class TicketInfo {
 @Id
-@GeneratedValue(strategy=GenerationType.SEQUENCE)
+@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ticket_seq")
+@GenericGenerator(
+		name = "ticket_seq",
+		strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
+		parameters = {
+				@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+				@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "TI"),
+				@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
  private String ticketId;
  private int paymentId;
  private int seatInfo;

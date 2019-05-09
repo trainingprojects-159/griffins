@@ -9,12 +9,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
 @Entity
 public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flight_seq")
+	@GenericGenerator(
+			name = "flight_seq",
+			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
+			parameters = {
+					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "FI"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String flightId;
+	
 	private String fname;
 	private int reserveSeat;
 	private int seatCap;
