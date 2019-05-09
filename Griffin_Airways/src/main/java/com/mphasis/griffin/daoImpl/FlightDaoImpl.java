@@ -32,7 +32,7 @@ public class FlightDaoImpl implements FlightDao {
 
 	}
 
-	public void deleteFlight(int flightid) {
+	public void deleteFlight(String flightid) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Flight f=(Flight)session.get(Flight.class,flightid);
@@ -50,7 +50,7 @@ public class FlightDaoImpl implements FlightDao {
 
 	}
 
-	public Flight getFlightById(int flightid) {
+	public Flight getFlightById(String flightid) {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Flight f=(Flight)session.get(Flight.class, flightid);	

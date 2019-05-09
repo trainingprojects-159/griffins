@@ -8,11 +8,11 @@ public interface ScheduleDao {
 
 	public void insertSchedule(Schedule schedule);
 
-	public void deleteSchedule(int scheId);
+	public void deleteSchedule(String scheId);
 
 	public void updateLocation(Schedule schedule);
 
-	public Schedule getById(int scheId);
+	public Schedule getById(String scheId);
 	
 	public List<Schedule> getALl();
 	

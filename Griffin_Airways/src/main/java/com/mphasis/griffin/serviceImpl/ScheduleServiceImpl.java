@@ -20,7 +20,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		scheduleDao.insertSchedule(schedule);
 	}
 
-	public void removeSchedule(int scheId) {
+	public void removeSchedule(String scheId) {
 
 		scheduleDao.deleteSchedule(scheId);
 	}
@@ -30,7 +30,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		scheduleDao.updateLocation(schedule);
 	}
 
-	public Schedule getById(int scheId) {
+	public Schedule getById(String scheId) {
 
 		return scheduleDao.getById(scheId);
 	}

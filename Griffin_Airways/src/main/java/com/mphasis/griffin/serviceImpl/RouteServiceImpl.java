@@ -22,7 +22,7 @@ public class RouteServiceImpl implements RouteService {
 
 	}
 
-	public void removeRoute(int routeid) {
+	public void removeRoute(String routeid) {
 		routeDao.deleteRoute(routeid);
 
 	}
@@ -32,7 +32,7 @@ public class RouteServiceImpl implements RouteService {
 
 	}
 
-	public Route getByIdRoute(int routeid) {
+	public Route getByIdRoute(String routeid) {
 		
 		return routeDao.getRouteById(routeid);
 	}

@@ -8,8 +8,8 @@ import com.mphasis.griffin.entities.Flight;
 
 public interface FlightService {
 	public void addFlight(Flight flight);
-	 public void removeFlight(int flightid);
+	 public void removeFlight(String flightid);
 	 public void editFlight(Flight flight);
-	 public Flight getByIdFlight(int flightid);
+	 public Flight getByIdFlight(String flightid);
 	 public List<Flight> getAll();
 }

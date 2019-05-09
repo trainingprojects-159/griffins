@@ -22,7 +22,7 @@ public class FlightServiceImpl implements FlightService {
 		flightDao.insertFlight(flight);
 	}
 
-	public void removeFlight(int flightid) {
+	public void removeFlight(String flightid) {
 		flightDao.deleteFlight(flightid);
 
 	}
@@ -32,7 +32,7 @@ public class FlightServiceImpl implements FlightService {
 
 	}
 
-	public Flight getByIdFlight(int flightid) {
+	public Flight getByIdFlight(String flightid) {
 		return flightDao.getFlightById(flightid);
 	}
 
