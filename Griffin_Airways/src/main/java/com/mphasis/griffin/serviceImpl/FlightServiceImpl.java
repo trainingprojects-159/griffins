@@ -8,17 +8,18 @@ import org.springframework.stereotype.Service;
 import com.mphasis.griffin.dao.FlightDao;
 import com.mphasis.griffin.entities.Flight;
 import com.mphasis.griffin.service.FlightService;
+
 @Service
 public class FlightServiceImpl implements FlightService {
-    @Autowired
-    FlightDao flightDao;
-    
+	@Autowired
+	FlightDao flightDao;
+
 	public void setFlightDao(FlightDao flightDao) {
 		this.flightDao = flightDao;
 	}
 
 	public void addFlight(Flight flight) {
-		System.out.println("Flight values in service"+flight.getFname());
+		System.out.println("Flight values in service" + flight.getFname());
 		flightDao.insertFlight(flight);
 	}
 
@@ -37,7 +38,7 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	public List<Flight> getAll() {
-		
+
 		return flightDao.getAll();
 	}
 

@@ -14,5 +14,5 @@ public interface ScheduleService {
 
 	public Schedule getById(String scheId);
 	
-	public List<Schedule> getALl();
+	public List<Schedule> getAll();
 }

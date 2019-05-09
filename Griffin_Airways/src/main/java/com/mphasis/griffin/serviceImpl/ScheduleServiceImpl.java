@@ -35,7 +35,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return scheduleDao.getById(scheId);
 	}
 
-	public List<Schedule> getALl() {
-		return scheduleDao.getALl();
+	public List<Schedule> getAll() {
+		return scheduleDao.getAll();
 	}
 }
