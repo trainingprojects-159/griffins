@@ -13,16 +13,16 @@ import javax.persistence.Id;
 public class TicketInfo {
 @Id
 @GeneratedValue(strategy=GenerationType.SEQUENCE)
- private int ticketId;
+ private String ticketId;
  private int paymentId;
  private int seatInfo;
- private String passengerId;
+ private String passId;
  private String scheId;
  private String status;
-public int getTicketId() {
+public String getTicketId() {
 	return ticketId;
 }
-public void setTicketId(int ticketId) {
+public void setTicketId(String ticketId) {
 	this.ticketId = ticketId;
 }
 public int getPaymentId() {
@@ -38,10 +38,10 @@ public void setSeatInfo(int seatInfo) {
 	this.seatInfo = seatInfo;
 }
 public String getPassengerId() {
-	return passengerId;
+	return passId;
 }
 public void setPassengerId(String passengerId) {
-	this.passengerId = passengerId;
+	this.passId = passengerId;
 }
 public String getScheId() {
 	return scheId;
@@ -58,7 +58,7 @@ public void setStatus(String status) {
 @Override
 public String toString() {
 	return "TicketInfo [ticketId=" + ticketId + ", paymentId=" + paymentId + ", seatInfo=" + seatInfo + ", passengerId="
-			+ passengerId + ", scheId=" + scheId + ", status=" + status + "]";
+			+ passId + ", scheId=" + scheId + ", status=" + status + "]";
 }
 
 }

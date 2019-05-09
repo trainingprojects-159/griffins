@@ -15,7 +15,7 @@ public class Route {
 	@Id
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int routeId;
+	private String routeId;
 	@ManyToOne
 	@JoinColumn(name="source_id")
 	private Location source;
@@ -47,11 +47,11 @@ public class Route {
 		this.flight = flight;
 	}
 
-	public int getRouteId() {
+	public String getRouteId() {
 		return routeId;
 	}
 
-	public void setRouteId(int routeId) {
+	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}
 

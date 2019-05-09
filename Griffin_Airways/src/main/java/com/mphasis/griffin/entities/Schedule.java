@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int scheId;
+	private String scheId;
 	private String scheDate;
 	@ManyToOne
 	@JoinColumn(name = "flightId")
@@ -36,11 +36,11 @@ public class Schedule {
 		this.flight = flight;
 	}
 
-	public int getScheId() {
+	public String getScheId() {
 		return scheId;
 	}
 
-	public void setScheId(int scheId) {
+	public void setScheId(String scheId) {
 		this.scheId = scheId;
 	}
 

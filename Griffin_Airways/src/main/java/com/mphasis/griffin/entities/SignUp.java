@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class SignUp {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int userId;
+	private String userId;
 	private String uname;
 	private String address;
 	private String gender;
@@ -18,10 +18,10 @@ public class SignUp {
 	private String email;
 	private String nic;
 	private String password;
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getUname() {

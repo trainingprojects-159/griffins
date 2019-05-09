@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Flight {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "flight_seq")
 	private String flightId;
 	private String fname;
 	private int reserveSeat;
