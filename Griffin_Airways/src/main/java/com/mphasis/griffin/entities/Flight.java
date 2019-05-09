@@ -37,6 +37,7 @@ public class Flight {
 	@OneToMany(mappedBy = "flight")
 	private List<Schedule> schedule;
 
+
 	public List<Schedule> getSchedule() {
 		return schedule;
 	}

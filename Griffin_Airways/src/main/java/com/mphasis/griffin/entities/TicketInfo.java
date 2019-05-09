@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -14,6 +15,9 @@ import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
  * @author kuppani.dinesh
  *
  */
+
+
+
 @Entity
 public class TicketInfo {
 @Id
@@ -27,7 +31,7 @@ public class TicketInfo {
 				@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
  private String ticketId;
  private int paymentId;
- private int seatInfo;
+ private String seatInfo;
  private String passId;
  private String scheId;
  private String status;
@@ -43,10 +47,10 @@ public int getPaymentId() {
 public void setPaymentId(int paymentId) {
 	this.paymentId = paymentId;
 }
-public int getSeatInfo() {
+public String getSeatInfo() {
 	return seatInfo;
 }
-public void setSeatInfo(int seatInfo) {
+public void setSeatInfo(String seatInfo) {
 	this.seatInfo = seatInfo;
 }
 public String getPassengerId() {
