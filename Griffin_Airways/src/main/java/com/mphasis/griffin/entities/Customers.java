@@ -5,10 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
+
 @Entity
 public class Customers {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "cust_seq")
+	@GenericGenerator(
+			name = "cust_seq",
+			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
+			parameters = {
+					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "CU"),
+					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String userId;
 	private String uname;
 	private String address;
