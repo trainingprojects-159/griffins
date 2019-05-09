@@ -34,7 +34,7 @@ public class PassengerServiceImpl implements PassengerService {
 		
 	}
 
-	public PassengerInfo getPassengerById(int passId) {
+	public PassengerInfo getPassengerById(String passId) {
 		
 		return passengerDao.getPassengerById(passId);
 	}
