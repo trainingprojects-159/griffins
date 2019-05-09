@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Customer {
+public class Customers {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private String userId;
