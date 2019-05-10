@@ -12,4 +12,5 @@ public interface FlightService {
 	 public void editFlight(Flight flight);
 	 public Flight getByIdFlight(String flightid);
 	 public List<Flight> getAll();
+
 }

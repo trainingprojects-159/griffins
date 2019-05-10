@@ -12,5 +12,4 @@ public interface FlightDao {
 	  public void updateFlight(Flight flight);
 	  public Flight getFlightById(String flightid);
 	  public List<Flight> getAll();
-	  
 }

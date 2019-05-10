@@ -21,6 +21,6 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	public List<Flight> retriveFlightDetails(String source, String destination, String scheduleDate) {
 		return customersDao.getFlightDetails(source, destination, scheduleDate);
-	}
 	
+	}	
 }

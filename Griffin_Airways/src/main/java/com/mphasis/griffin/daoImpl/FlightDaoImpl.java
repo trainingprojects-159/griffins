@@ -32,7 +32,6 @@ public class FlightDaoImpl implements FlightDao {
 		session.save(flight);
 		tr.commit();
 
-
 	}
 
 	public void deleteFlight(String flightid) {

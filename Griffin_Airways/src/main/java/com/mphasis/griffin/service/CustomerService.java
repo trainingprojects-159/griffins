@@ -8,4 +8,5 @@ import com.mphasis.griffin.entities.Flight;
 public interface CustomerService {
 	public void register(Customers customers);
 	public List<Flight> retriveFlightDetails(String source, String destination, String scheduleDate);
+
 }

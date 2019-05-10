@@ -58,5 +58,6 @@ public class CustomersDaoImpl implements CustomersDao{
 		query5.setParameter("flightIds", schedule);
         List<Flight> flight=query5.getResultList();
         return flight;
+        
 	}
 }
