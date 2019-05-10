@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.griffin.entities.PassengerInfo;
 import com.mphasis.griffin.entities.Schedule;
+import com.mphasis.griffin.entities.TicketInfo;
 import com.mphasis.griffin.entities.FlightUser;
 import com.mphasis.griffin.service.PassengerService;
 import com.mphasis.griffin.service.ScheduleService;
+import com.mphasis.griffin.service.TicketInfoService;
 import com.mphasis.griffin.service.FlightUserService;
 
 @RestController
@@ -27,9 +29,12 @@ public class UserController {
 
 	@Autowired
 	PassengerService passengerService;
-	
+
 	@Autowired
 	ScheduleService scheduleService;
+
+	@Autowired
+	TicketInfoService ticketInfoService;
 
 	public void setFlightUserService(FlightUserService flightUserService) {
 		this.flightUserService = flightUserService;
@@ -38,19 +43,18 @@ public class UserController {
 	public void setPassengerService(PassengerService passengerService) {
 		this.passengerService = passengerService;
 	}
-	
+
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
 
 	// ---------FlightUser-----------------//
-	
+
 	@RequestMapping(value = "/signIn/{email}/{password}", method = RequestMethod.GET)
 	public FlightUser signin(@PathVariable("email") String email, @PathVariable("password") String password) {
 		FlightUser signin = flightUserService.signIn(email, password);
 		return signin;
 	}
-	
 
 	// ---------PassengerInfo-----------------//
 
@@ -84,17 +88,39 @@ public class UserController {
 	public PassengerInfo getPassengerById(@PathVariable("passId") String passId) {
 		return this.passengerService.getPassengerById(passId);
 	}
-	
+
 	// ---------Schedule-----------------//
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Schedule> listschedules() {
 		return scheduleService.getAll();
 	}
-	
+
 	@RequestMapping(value = "/schedule/{scheId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Schedule getScheduleById(@PathVariable("scheId") String scheId) {
 		return this.scheduleService.getById(scheId);
+	}
+
+	// ---------TicketInfo-----------------//
+
+	@RequestMapping(value = "/ticketInfo/add", method = RequestMethod.POST)
+	public TicketInfo bookTicket(TicketInfo ticketInfo) {
+		return this.ticketInfoService.addTicket(ticketInfo);
+	}
+
+	@RequestMapping(value = "/ticketInfo/{ticketId}", method = RequestMethod.POST)
+	public void cancelTicket(String ticketId) {
+		this.ticketInfoService.modifyTicket(ticketId);
+	}
+
+	@RequestMapping(value = "/ticketInfo/{ticketId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public TicketInfo getTicketById(@PathVariable("ticketId") String ticketId) {
+		return this.ticketInfoService.getById(ticketId);
+	}
+
+	@RequestMapping(value = "/ticketInfos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<TicketInfo> listTicketInfo() {
+		return ticketInfoService.getAll();
 	}
 
 }

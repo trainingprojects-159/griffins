@@ -6,9 +6,9 @@ import com.mphasis.griffin.entities.TicketInfo;
 
 public interface TicketInfoDao {
 
-	public void insertTicket(TicketInfo ticketInfo);
+	public TicketInfo insertTicket(TicketInfo ticketInfo);
 	
-	public void updateTicket(String ticketInfo);
+	public void updateTicket(String ticketId);
 	
 	public TicketInfo getById(String ticketId);
 	

@@ -21,18 +21,19 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertTicket(TicketInfo ticketInfo) {
+	public TicketInfo insertTicket(TicketInfo ticketInfo) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(ticketInfo);
 		transaction.commit();
+		return ticketInfo;
 	}
 
 
-	public void updateTicket(String ticketInfo) {
+	public void updateTicket(String ticketId) {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
-		TicketInfo ticketid = session.get(TicketInfo.class, ticketInfo);
+		TicketInfo ticketid = session.get(TicketInfo.class, ticketId);
 		ticketid.setStatus("canceled");
 		session.update(ticketid);
 		tr.commit();

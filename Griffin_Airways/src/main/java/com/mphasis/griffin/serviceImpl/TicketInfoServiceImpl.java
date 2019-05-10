@@ -19,12 +19,12 @@ public class TicketInfoServiceImpl implements TicketInfoService {
 		this.ticketInfoDao = ticketInfoDao;
 	}
 
-	public void addTicket(TicketInfo ticketInfo) {
-
+	public TicketInfo addTicket(TicketInfo ticketInfo) {
+		return ticketInfoDao.insertTicket(ticketInfo);
 	}
 
-	public void modifyTicket(String ticketInfo) {
-
+	public void modifyTicket(String ticketId) {
+		ticketInfoDao.updateTicket(ticketId);
 	}
 
 	public TicketInfo getById(String ticketId) {
