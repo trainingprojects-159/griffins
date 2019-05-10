@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserSignInService{
 		this.userSignInDao = userDao;
 	}
 
-	public SignIn signIn(String userId, String password) {
-		return userSignInDao.signIn(userId, password);
+	public SignIn signIn(String email, String password) {
+		return userSignInDao.signIn(email, password);
 	}
 	
 }
