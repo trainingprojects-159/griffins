@@ -25,12 +25,43 @@ import com.mphasis.griffin.service.ScheduleService;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
+
 	@Autowired
 	AdminService adminService;
+
+	@Autowired
+	FlightService flightService;
+
+	@Autowired
+	RouteService routeService;
+
+	@Autowired
+	LocationService locationService;
+
+	@Autowired
+	ScheduleService scheduleService;
 
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
 	}
+
+	public void setFlightService(FlightService flightService) {
+		this.flightService = flightService;
+	}
+
+	public void setRouteService(RouteService routeService) {
+		this.routeService = routeService;
+	}
+
+	public void setLocationService(LocationService locationService) {
+		this.locationService = locationService;
+	}
+
+	public void setScheduleService(ScheduleService scheduleService) {
+		this.scheduleService = scheduleService;
+	}
+
+	// ---------Admin-----------------//
 
 	@RequestMapping(value = "/login/{userId}/{password}", method = RequestMethod.GET)
 	public Admin login(@PathVariable("userId") String userId, @PathVariable("password") String password) {
@@ -38,12 +69,7 @@ public class AdminController {
 		return admin;
 	}
 
-	@Autowired
-	FlightService flightService;
-
-	public void setFlightService(FlightService flightService) {
-		this.flightService = flightService;
-	}
+	// ---------Flight-----------------//
 
 	@RequestMapping(value = "/flights", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Flight> listFlights() {
@@ -74,12 +100,7 @@ public class AdminController {
 		return this.flightService.getByIdFlight(flightId);
 	}
 
-	@Autowired
-	RouteService routeService;
-
-	public void setRouteService(RouteService routeService) {
-		this.routeService = routeService;
-	}
+	// ---------Route-----------------//
 
 	@RequestMapping(value = "/routes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Route> listRoutes() {
@@ -110,12 +131,7 @@ public class AdminController {
 		return this.routeService.getByIdRoute(routeid);
 	}
 
-	@Autowired
-	LocationService locationService;
-
-	public void setLocationService(LocationService locationService) {
-		this.locationService = locationService;
-	}
+	// ---------Location-----------------//
 
 	@RequestMapping(value = "/locations", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Location> listLocations() {
@@ -132,7 +148,6 @@ public class AdminController {
 	public void removeLocation(@PathVariable("locId") String locId) {
 
 		this.locationService.removeLocation(locId);
-		;
 	}
 
 	@RequestMapping(value = "/location/{locID}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -150,12 +165,7 @@ public class AdminController {
 		return this.locationService.getByName(locName);
 	}
 
-	@Autowired
-	ScheduleService scheduleService;
-
-	public void setScheduleService(ScheduleService scheduleService) {
-		this.scheduleService = scheduleService;
-	}
+	// ---------Schedule-----------------//
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Schedule> listschedules() {
