@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -21,44 +22,36 @@ public class Route {
 	@Id
 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "loc_seq")
-	@GenericGenerator(
-			name = "loc_seq",
-			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
-			parameters = {
-					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
-					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "RO"),
-					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
+	@GenericGenerator(name = "loc_seq", strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator", parameters = {
+			@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "RO"),
+			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
 	private String routeId;
+
 	@ManyToOne
-	@JoinColumn(name="sourceId")
+	@JoinColumn(name = "sourceId")
 	private Location source;
-	
+
 	@ManyToOne
-	@JoinColumn(name="destinationId")
+	@JoinColumn(name = "destinationId")
 	private Location destination;
+
 	private int distance;
 	private int duration;
 	private int cost;
-	@OneToMany(mappedBy = "route",fetch=FetchType.LAZY)
+
+	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
 	private List<Flight> flight;
+	
 	@OneToMany(mappedBy = "schedule")
 	private List<Schedule> schedule;
 
-	public List<Schedule> getSchedule() {
-		return schedule;
-	}
-
-	public void setSchedule(List<Schedule> schedule) {
-		this.schedule = schedule;
-	}
-
-	public List<Flight> getFlight() {
-		return flight;
-	}
-
-	public void setFlight(List<Flight> flight) {
-		this.flight = flight;
-	}
+	@ManyToOne
+	private Admin admin;
+	
+	@OneToOne
+	@JoinColumn(name="locId")
+	private Location location;
 
 	public String getRouteId() {
 		return routeId;
@@ -68,7 +61,21 @@ public class Route {
 		this.routeId = routeId;
 	}
 
-	
+	public Location getSource() {
+		return source;
+	}
+
+	public void setSource(Location source) {
+		this.source = source;
+	}
+
+	public Location getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Location destination) {
+		this.destination = destination;
+	}
 
 	public int getDistance() {
 		return distance;
@@ -94,30 +101,44 @@ public class Route {
 		this.cost = cost;
 	}
 
-	public Location getSource() {
-		return source;
+	public List<Flight> getFlight() {
+		return flight;
 	}
 
-	public void setSource(Location source) {
-		this.source = source;
+	public void setFlight(List<Flight> flight) {
+		this.flight = flight;
 	}
 
-	public Location getDestination() {
-		return destination;
+	public List<Schedule> getSchedule() {
+		return schedule;
 	}
 
-	public void setDestination(Location destination) {
-		this.destination = destination;
+	public void setSchedule(List<Schedule> schedule) {
+		this.schedule = schedule;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	@Override
 	public String toString() {
 		return "Route [routeId=" + routeId + ", source=" + source + ", destination=" + destination + ", distance="
 				+ distance + ", duration=" + duration + ", cost=" + cost + ", flight=" + flight + ", schedule="
-				+ schedule + "]";
+				+ schedule + ", admin=" + admin + ", location=" + location + "]";
 	}
 
 	
-	
-
 }

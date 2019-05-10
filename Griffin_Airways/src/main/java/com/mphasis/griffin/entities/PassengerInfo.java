@@ -32,6 +32,7 @@ public class PassengerInfo {
 	private long contact;
 	private String nic;
 	private String passport;
+	
 	@OneToOne
 	@JoinColumn(name="scheduleId")
 	private Schedule scheId;

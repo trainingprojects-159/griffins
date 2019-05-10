@@ -16,37 +16,23 @@ import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sche_seq")
-	@GenericGenerator(
-			name = "sche_seq",
-			strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator",
-			parameters = {
-					@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
-					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "SI"),
-					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
+	@GenericGenerator(name = "sche_seq", strategy = "com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator", parameters = {
+			@Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "4"),
+			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "SI"),
+			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
 	private String scheId;
 	private String scheDate;
+
 	@ManyToOne
 	@JoinColumn(name = "flightId")
 	private Flight flight;
+
 	@ManyToOne
 	@JoinColumn(name = "routeId")
 	private Route route;
 
-	public Route getRoute() {
-		return route;
-	}
-
-	public void setRoute(Route route) {
-		this.route = route;
-	}
-
-	public Flight getFlight() {
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		this.flight = flight;
-	}
+	@ManyToOne
+	private Admin admin;
 
 	public String getScheId() {
 		return scheId;
@@ -64,12 +50,34 @@ public class Schedule {
 		this.scheDate = scheDate;
 	}
 
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
+
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
-
-
-		return "Schedule [scheId=" + scheId +  ", scheDate="
-				+ scheDate + ", flight=" + flight + ", route=" + route + "]";
+		return "Schedule [scheId=" + scheId + ", scheDate=" + scheDate + ", flight=" + flight + ", route=" + route
+				+ ", admin=" + admin + "]";
 	}
 
 }

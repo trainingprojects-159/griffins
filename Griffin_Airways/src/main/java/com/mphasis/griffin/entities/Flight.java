@@ -28,32 +28,19 @@ public class Flight {
 					@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "FI"),
 					@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")})
 	private String flightId;
-	
 	private String fname;
 	private int reserveSeat;
 	private int seatCap;
+	
 	@ManyToOne
 	@JoinColumn(name = "routeId")
 	private Route route;
+	
 	@OneToMany(mappedBy = "flight",fetch=FetchType.LAZY)
 	private List<Schedule> schedule;
-
-
-	public List<Schedule> getSchedule() {
-		return schedule;
-	}
-
-	public void setSchedule(List<Schedule> schedule) {
-		this.schedule = schedule;
-	}
-
-	public Route getRoute() {
-		return route;
-	}
-
-	public void setRoute(Route route) {
-		this.route = route;
-	}
+	
+	@ManyToOne
+	private Admin admin;
 
 	public String getFlightId() {
 		return flightId;
@@ -87,11 +74,34 @@ public class Flight {
 		this.seatCap = seatCap;
 	}
 
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+	public List<Schedule> getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(List<Schedule> schedule) {
+		this.schedule = schedule;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", fname=" + fname + ", reserveSeat=" + reserveSeat + ", seatCap="
-				+ seatCap + ", route=" + route + ", schedule=" + schedule + "]";
+				+ seatCap + ", route=" + route + ", schedule=" + schedule + ", admin=" + admin + "]";
 	}
 
 }
-

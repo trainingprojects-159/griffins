@@ -24,6 +24,7 @@ public class TicketInfo {
 	private int paymentId;
 	private String seatInfo;
 	private String passId;
+
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private Customers customer;

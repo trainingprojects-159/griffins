@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -21,6 +23,12 @@ public class Location {
 	private String locId;
 	private String locName;
 
+	@ManyToOne
+	private Admin admin;
+
+	@OneToOne
+	private Route route;
+
 	public String getLocId() {
 		return locId;
 	}
@@ -37,9 +45,25 @@ public class Location {
 		this.locName = locName;
 	}
 
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
 	@Override
 	public String toString() {
-		return "Location [locId=" + locId + ", locName=" + locName + "]";
+		return "Location [locId=" + locId + ", locName=" + locName + ", admin=" + admin + ", route=" + route + "]";
 	}
 
 }
