@@ -25,4 +25,3 @@ public class SignIn {
 		return "SignIn [email=" + email + ", password=" + password + "]";
 	}
 }
-
