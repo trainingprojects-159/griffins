@@ -25,9 +25,6 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 
 	}
 
-	public void deleteTicket(String ticketId) {
-
-	}
 
 	public void updateTicket(TicketInfo ticketInfo) {
 

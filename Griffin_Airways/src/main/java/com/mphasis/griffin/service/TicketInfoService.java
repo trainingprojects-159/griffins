@@ -7,9 +7,7 @@ import com.mphasis.griffin.entities.TicketInfo;
 public interface TicketInfoService {
 
 public void addTicket(TicketInfo ticketInfo);
-	
-	public void removeTicket(String ticketId);
-	
+		
 	public void modifyTicket(TicketInfo ticketInfo);
 	
 	public TicketInfo getById(String ticketId);

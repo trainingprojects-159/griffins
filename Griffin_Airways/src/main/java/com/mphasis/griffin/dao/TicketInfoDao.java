@@ -8,8 +8,6 @@ public interface TicketInfoDao {
 
 	public void insertTicket(TicketInfo ticketInfo);
 	
-	public void deleteTicket(String ticketId);
-	
 	public void updateTicket(TicketInfo ticketInfo);
 	
 	public TicketInfo getById(String ticketId);
