@@ -1,7 +1,7 @@
 package com.mphasis.griffin.dao;
 
-import com.mphasis.griffin.entities.SignIn;
+import com.mphasis.griffin.entities.FlightUser;
 
 public interface UserSignInDao {
-	public SignIn signIn(String email,String password);
+	public FlightUser signIn(String email,String password);
 }

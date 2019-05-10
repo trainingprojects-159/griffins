@@ -59,7 +59,7 @@ public class RouteDaoImpl implements RouteDao {
 	public List<Route> getAll() {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Route> route=session.createCriteria(Route.class).list();
+		List<Route> route=session.createQuery("from Route",Route.class).list();
 		tr.commit();
 		return route;
 	}

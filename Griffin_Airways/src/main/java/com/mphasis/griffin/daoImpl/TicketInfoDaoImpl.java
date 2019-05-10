@@ -22,12 +22,20 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 	}
 
 	public void insertTicket(TicketInfo ticketInfo) {
-
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		session.save(ticketInfo);
+		transaction.commit();
 	}
 
 
-	public void updateTicket(TicketInfo ticketInfo) {
-
+	public void updateTicket(String ticketInfo) {
+		Session session = sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
+		TicketInfo ticketid = session.get(TicketInfo.class, ticketInfo);
+		ticketid.setStatus("canceled");
+		session.update(ticketid);
+		tr.commit();
 	}
 
 	public TicketInfo getById(String ticketId) {
@@ -42,9 +50,11 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 	public List<TicketInfo> getAll() {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
-		List<TicketInfo> ticInfo = session.createCriteria(TicketInfo.class).list();
+		List<TicketInfo> ticInfo = session.createQuery("TicketInfo",TicketInfo.class).list();
 		tr.commit();
 		return ticInfo;
 	}
+
+	
 
 }

@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class SignIn {
+public class FlightUser {
 	@Id
 	private String email;
 	private String password;

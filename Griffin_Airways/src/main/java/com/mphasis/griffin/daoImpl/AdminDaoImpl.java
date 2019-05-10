@@ -7,25 +7,24 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mphasis.griffin.dao.UserSignInDao;
-import com.mphasis.griffin.entities.FlightUser;
+import com.mphasis.griffin.dao.AdminDao;
+import com.mphasis.griffin.entities.Admin;
 
 @Repository
-public class UserSignInDaoImpl implements UserSignInDao{
+public class AdminDaoImpl implements AdminDao {
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	public FlightUser signIn(String email, String password) {
+	public Admin login(String userId, String password) {
 		Session session=sessionFactory.getCurrentSession();
-		TypedQuery query = session.createQuery("from SignIn where email=:email and password=:password");
-		query.setParameter("email", email);
+		TypedQuery<Admin> query = session.createQuery("from SignIn where userId=:userId and password=:password");
+		query.setParameter("userId", userId);
 		query.setParameter("password", password);
-		FlightUser signIn=(FlightUser) query.getSingleResult();
-		return signIn;
+		Admin login=(Admin) query.getSingleResult();
+		return login;
 	}
-	
+
 }

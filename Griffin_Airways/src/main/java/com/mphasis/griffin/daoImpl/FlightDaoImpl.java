@@ -5,14 +5,13 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mphasis.griffin.dao.FlightDao;
 import com.mphasis.griffin.entities.Flight;
-import com.mphasis.griffin.entities.Route;
-import com.mphasis.griffin.entities.Schedule;
+
 
 
 
@@ -64,7 +63,7 @@ public class FlightDaoImpl implements FlightDao {
 	public List<Flight> getAll() {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
-		List<Flight> flight=session.createCriteria(Flight.class).list();
+		List<Flight> flight=session.createQuery("from Flight",Flight.class).list();
 		tr.commit();
 		return flight;
 	}

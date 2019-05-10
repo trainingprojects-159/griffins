@@ -8,7 +8,7 @@ public interface TicketInfoDao {
 
 	public void insertTicket(TicketInfo ticketInfo);
 	
-	public void updateTicket(TicketInfo ticketInfo);
+	public void updateTicket(String ticketInfo);
 	
 	public TicketInfo getById(String ticketId);
 	

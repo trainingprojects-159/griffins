@@ -56,7 +56,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	public List<Schedule> getAll() {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
-		List<Schedule> sches = session.createCriteria(Schedule.class).list();
+		List<Schedule> sches = session.createQuery("from Schedule",Schedule.class).list();
 		tr.commit();
 		return sches;
 	}

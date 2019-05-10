@@ -8,7 +8,7 @@ public interface TicketInfoService {
 
 public void addTicket(TicketInfo ticketInfo);
 		
-	public void modifyTicket(TicketInfo ticketInfo);
+	public void modifyTicket(String ticketInfo);
 	
 	public TicketInfo getById(String ticketId);
 	

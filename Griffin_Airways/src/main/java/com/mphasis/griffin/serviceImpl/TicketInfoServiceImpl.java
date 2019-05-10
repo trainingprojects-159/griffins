@@ -23,7 +23,7 @@ public class TicketInfoServiceImpl implements TicketInfoService {
 
 	}
 
-	public void modifyTicket(TicketInfo ticketInfo) {
+	public void modifyTicket(String ticketInfo) {
 
 	}
 
