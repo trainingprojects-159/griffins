@@ -12,8 +12,5 @@ public interface FlightDao {
 	  public void updateFlight(Flight flight);
 	  public Flight getFlightById(String flightid);
 	  public List<Flight> getAll();
-	  /*
-	   * Return Flight based on route and date of journey.
-	   */
-	  public List<Flight> getFlightDetails(String source, String destination, String scheDate);
+	  
 }
