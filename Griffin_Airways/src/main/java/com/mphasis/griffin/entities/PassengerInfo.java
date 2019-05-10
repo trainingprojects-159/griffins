@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -30,7 +32,10 @@ public class PassengerInfo {
 	private long contact;
 	private String nic;
 	private String passport;
-	private String scheId;
+	@OneToOne
+	@JoinColumn(name="scheduleId")
+	private Schedule scheId;
+	
 	public String getPassId() {
 		return passId;
 	}
@@ -85,10 +90,10 @@ public class PassengerInfo {
 	public void setPassport(String passport) {
 		this.passport = passport;
 	}
-	public String getScheId() {
+	public Schedule getScheId() {
 		return scheId;
 	}
-	public void setScheId(String scheId) {
+	public void setScheId(Schedule scheId) {
 		this.scheId = scheId;
 	}
 	@Override
