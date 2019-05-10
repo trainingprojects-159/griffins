@@ -27,18 +27,16 @@ import com.mphasis.griffin.service.ScheduleService;
 public class AdminController {
 	@Autowired
 	AdminService adminService;
-	
-	
-	
+
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
 	}
+
 	@RequestMapping(value = "/login/{userId}/{password}", method = RequestMethod.GET)
 	public Admin login(@PathVariable("userId") String userId, @PathVariable("password") String password) {
 		Admin admin = adminService.login(userId, password);
 		return admin;
 	}
-
 
 	@Autowired
 	FlightService flightService;

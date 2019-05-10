@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mphasis.griffin.entities.PassengerInfo;
 import com.mphasis.griffin.entities.FlightUser;
 import com.mphasis.griffin.service.PassengerService;
-import com.mphasis.griffin.service.UserSignInService;
+import com.mphasis.griffin.service.FlightUserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	UserSignInService userService;
+	FlightUserService flightUserService;
 
 	@RequestMapping(value = "/signIn/{email}/{password}", method = RequestMethod.GET)
 	public FlightUser signin(@PathVariable("email") String email, @PathVariable("password") String password) {
-		FlightUser signin = userService.signIn(email, password);
+		FlightUser signin = flightUserService.signIn(email, password);
 		return signin;
 	}
 

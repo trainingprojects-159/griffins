@@ -7,11 +7,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mphasis.griffin.dao.UserSignInDao;
+import com.mphasis.griffin.dao.FlightUserDao;
 import com.mphasis.griffin.entities.FlightUser;
 
 @Repository
-public class UserSignInDaoImpl implements UserSignInDao{
+public class FlightUserDaoImpl implements FlightUserDao{
 	@Autowired
 	SessionFactory sessionFactory;
 	

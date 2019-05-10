@@ -3,6 +3,7 @@ package com.mphasis.griffin.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +39,7 @@ public class Route {
 	private int distance;
 	private int duration;
 	private int cost;
-	@OneToMany(mappedBy = "route")
+	@OneToMany(mappedBy = "route",fetch=FetchType.LAZY)
 	private List<Flight> flight;
 	@OneToMany(mappedBy = "schedule")
 	private List<Schedule> schedule;

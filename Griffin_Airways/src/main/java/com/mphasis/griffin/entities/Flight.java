@@ -3,6 +3,7 @@ package com.mphasis.griffin.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Flight {
 	@ManyToOne
 	@JoinColumn(name = "routeId")
 	private Route route;
-	@OneToMany(mappedBy = "flight")
+	@OneToMany(mappedBy = "flight",fetch=FetchType.LAZY)
 	private List<Schedule> schedule;
 
 

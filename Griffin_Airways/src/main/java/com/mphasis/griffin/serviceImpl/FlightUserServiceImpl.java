@@ -3,17 +3,17 @@ package com.mphasis.griffin.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mphasis.griffin.dao.UserSignInDao;
+import com.mphasis.griffin.dao.FlightUserDao;
 import com.mphasis.griffin.entities.FlightUser;
-import com.mphasis.griffin.service.UserSignInService;
+import com.mphasis.griffin.service.FlightUserService;
 
 @Service
-public class UserServiceImpl implements UserSignInService{
+public class FlightUserServiceImpl implements FlightUserService{
 	
 	@Autowired
-	UserSignInDao userSignInDao;
+	FlightUserDao userSignInDao;
 	
-	public void setUserDao(UserSignInDao userDao) {
+	public void setUserDao(FlightUserDao userDao) {
 		this.userSignInDao = userDao;
 	}
 
