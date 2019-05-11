@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.FlightDao;
 import com.mphasis.griffin.entities.Flight;
 import com.mphasis.griffin.service.FlightService;
@@ -18,26 +19,26 @@ public class FlightServiceImpl implements FlightService {
 		this.flightDao = flightDao;
 	}
 
-	public void addFlight(Flight flight) {
+	public void addFlight(Flight flight) throws BusinessException{
 		System.out.println("Flight values in service" + flight.getFname());
 		flightDao.insertFlight(flight);
 	}
 
-	public void removeFlight(String flightid) {
+	public void removeFlight(String flightid) throws BusinessException {
 		flightDao.deleteFlight(flightid);
 
 	}
 
-	public void editFlight(Flight flight) {
+	public void editFlight(Flight flight) throws BusinessException{
 		flightDao.updateFlight(flight);
 
 	}
 
-	public Flight getByIdFlight(String flightid) {
+	public Flight getByIdFlight(String flightid) throws BusinessException {
 		return flightDao.getFlightById(flightid);
 	}
 
-	public List<Flight> getAll() {
+	public List<Flight> getAll() throws BusinessException{
 
 		return flightDao.getAll();
 	}

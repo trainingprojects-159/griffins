@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.FlightDao;
 import com.mphasis.griffin.entities.Flight;
 
@@ -24,7 +25,7 @@ public class FlightDaoImpl implements FlightDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertFlight(Flight flight) {
+	public void insertFlight(Flight flight) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		System.out.println(flight.getFname()+"flight values in dao");
@@ -33,7 +34,7 @@ public class FlightDaoImpl implements FlightDao {
 
 	}
 
-	public void deleteFlight(String flightid) {
+	public void deleteFlight(String flightid) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Flight f=(Flight)session.get(Flight.class,flightid);
@@ -43,7 +44,7 @@ public class FlightDaoImpl implements FlightDao {
 
 	}
 
-	public void updateFlight(Flight flight) {
+	public void updateFlight(Flight flight) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		session.update(flight);
@@ -51,7 +52,7 @@ public class FlightDaoImpl implements FlightDao {
 
 	}
 
-	public Flight getFlightById(String flightid) {
+	public Flight getFlightById(String flightid) throws BusinessException{
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Flight f=(Flight)session.get(Flight.class, flightid);	
@@ -60,7 +61,7 @@ public class FlightDaoImpl implements FlightDao {
 		return f;
 	}
 
-	public List<Flight> getAll() {
+	public List<Flight> getAll() throws BusinessException{
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		List<Flight> flight=session.createQuery("from Flight",Flight.class).list();

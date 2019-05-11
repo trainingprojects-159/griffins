@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.LocationDao;
 import com.mphasis.griffin.entities.Location;
 
@@ -20,7 +21,7 @@ public class LocationDaoImpl implements LocationDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertLocation(Location location) {
+	public void insertLocation(Location location) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		System.out.println(location.getLocName() + "Location values in dao ");
@@ -28,14 +29,14 @@ public class LocationDaoImpl implements LocationDao {
 		tr.commit();
 	}
 
-	public void updateLocation(Location location) {
+	public void updateLocation(Location location) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		session.update(location);
 		tr.commit();
 	}
 
-	public Location getByName(String locName) {
+	public Location getByName(String locName) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		Location loc = (Location) session.get(Location.class, locName);
@@ -44,7 +45,7 @@ public class LocationDaoImpl implements LocationDao {
 		return loc;
 	}
 
-	public List<Location> getAll() {
+	public List<Location> getAll() throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List<Location> locs = session.createQuery("from Location",Location.class).list();
@@ -52,7 +53,7 @@ public class LocationDaoImpl implements LocationDao {
 		return locs;
 	}
 
-	public void deleteLocation(String locId) {
+	public void deleteLocation(String locId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		Location loc = (Location) session.get(Location.class, locId);
@@ -60,7 +61,7 @@ public class LocationDaoImpl implements LocationDao {
 		tr.commit();
 	}
 
-	public Location getById(String locId) {
+	public Location getById(String locId) throws BusinessException{
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		Location loc = (Location) session.get(Location.class, locId);

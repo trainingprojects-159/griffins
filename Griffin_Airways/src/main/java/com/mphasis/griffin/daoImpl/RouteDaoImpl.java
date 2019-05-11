@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BuissnessException;
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.RouteDao;
 
 import com.mphasis.griffin.entities.Route;
@@ -21,7 +23,8 @@ public class RouteDaoImpl implements RouteDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
     	this.sessionFactory=sessionFactory;
     }
-	public void insertRoute(Route route) {
+    
+	public void insertRoute(Route route) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		System.out.println(route.getSource()+"route values in dao");
@@ -30,7 +33,7 @@ public class RouteDaoImpl implements RouteDao {
 		tr.commit();
 	}
 
-	public void deleteRoute(String routeid) {
+	public void deleteRoute(String routeid) throws BusinessException{
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Route r=(Route)session.get(Route.class,routeid);
@@ -39,15 +42,14 @@ public class RouteDaoImpl implements RouteDao {
 		tr.commit();
 	}
 
-	public void updateRoute(Route route) {
+	public void updateRoute(Route route) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		session.update(route);
 		tr.commit();
-;
 	}
 
-	public Route getRouteById(String routeid) {
+	public Route getRouteById(String routeid) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		Route r=(Route)session.get(Route.class, routeid);	
@@ -56,7 +58,7 @@ public class RouteDaoImpl implements RouteDao {
 		return r;
 	}
 
-	public List<Route> getAll() {
+	public List<Route> getAll() throws BusinessException{
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		List<Route> route=session.createQuery("from Route",Route.class).list();

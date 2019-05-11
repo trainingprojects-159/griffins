@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BuissnessException;
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.ScheduleDao;
 import com.mphasis.griffin.entities.Schedule;
 
@@ -21,7 +23,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public void insertSchedule(Schedule schedule) {
+	public void insertSchedule(Schedule schedule) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		System.out.println(schedule.getScheId() + "Schedule id values in dao ");
@@ -29,7 +31,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		tr.commit();
 	}
 
-	public void deleteSchedule(String scheId) {
+	public void deleteSchedule(String scheId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		Schedule sche = (Schedule) session.get(Schedule.class, scheId);
@@ -37,14 +39,14 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		tr.commit();
 	}
 
-	public void updateLocation(Schedule schedule) {
+	public void updateLocation(Schedule schedule) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		session.update(schedule);
 		tr.commit();
 	}
 
-	public Schedule getById(String scheId) {
+	public Schedule getById(String scheId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		Schedule sche = (Schedule) session.get(Schedule.class, scheId);
@@ -53,7 +55,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		return sche;
 	}
 
-	public List<Schedule> getAll() {
+	public List<Schedule> getAll() throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List<Schedule> sches = session.createQuery("from Schedule",Schedule.class).list();

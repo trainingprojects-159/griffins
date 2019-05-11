@@ -2,20 +2,21 @@ package com.mphasis.griffin.dao;
 
 import java.util.List;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.entities.Location;
 
-public interface LocationDao {
+public interface LocationDao  {
 
-	public void insertLocation(Location location);
+	public void insertLocation(Location location) throws BusinessException;
 
-	public void deleteLocation(String locId);
+	public void deleteLocation(String locId) throws BusinessException;
 
-	public void updateLocation(Location location);
+	public void updateLocation(Location location) throws BusinessException;
 
-	public Location getById(String locId);
+	public Location getById(String locId) throws BusinessException;
 
-	public Location getByName(String locName);
+	public Location getByName(String locName) throws BusinessException;
 
-	public List<Location> getAll();
+	public List<Location> getAll() throws BusinessException;
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.TicketInfoDao;
 import com.mphasis.griffin.entities.TicketInfo;
 import com.mphasis.griffin.service.TicketInfoService;
@@ -19,19 +20,19 @@ public class TicketInfoServiceImpl implements TicketInfoService {
 		this.ticketInfoDao = ticketInfoDao;
 	}
 
-	public TicketInfo addTicket(TicketInfo ticketInfo) {
+	public TicketInfo addTicket(TicketInfo ticketInfo) throws BusinessException {
 		return ticketInfoDao.insertTicket(ticketInfo);
 	}
 
-	public void modifyTicket(String ticketId) {
+	public void modifyTicket(String ticketId) throws BusinessException {
 		ticketInfoDao.updateTicket(ticketId);
 	}
 
-	public TicketInfo getById(String ticketId) {
+	public TicketInfo getById(String ticketId) throws BusinessException {
 		return ticketInfoDao.getById(ticketId);
 	}
 
-	public List<TicketInfo> getAll() {
+	public List<TicketInfo> getAll() throws BusinessException {
 		return ticketInfoDao.getAll();
 	}
 

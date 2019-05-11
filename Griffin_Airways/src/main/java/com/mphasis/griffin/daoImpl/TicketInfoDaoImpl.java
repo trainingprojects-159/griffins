@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BuissnessException;
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.TicketInfoDao;
 import com.mphasis.griffin.entities.TicketInfo;
 
@@ -21,7 +23,7 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public TicketInfo insertTicket(TicketInfo ticketInfo) {
+	public TicketInfo insertTicket(TicketInfo ticketInfo) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.save(ticketInfo);
@@ -30,7 +32,7 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 	}
 
 
-	public void updateTicket(String ticketId) {
+	public void updateTicket(String ticketId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		TicketInfo ticketid = session.get(TicketInfo.class, ticketId);
@@ -39,7 +41,7 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 		tr.commit();
 	}
 
-	public TicketInfo getById(String ticketId) {
+	public TicketInfo getById(String ticketId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		TicketInfo ticInfo = (TicketInfo) session.get(TicketInfo.class, ticketId);
@@ -48,7 +50,7 @@ public class TicketInfoDaoImpl implements TicketInfoDao {
 		return ticInfo;
 	}
 
-	public List<TicketInfo> getAll() {
+	public List<TicketInfo> getAll() throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List<TicketInfo> ticInfo = session.createQuery("TicketInfo",TicketInfo.class).list();

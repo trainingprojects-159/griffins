@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.AdminDao;
 import com.mphasis.griffin.entities.Admin;
 
@@ -19,7 +20,7 @@ public class AdminDaoImpl implements AdminDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	public Admin login(String userId, String password) {
+	public Admin login(String userId, String password) throws BusinessException {
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();
 		TypedQuery<Admin> query = session.createQuery("from SignIn where userId=:userId and password=:password");
@@ -29,7 +30,4 @@ public class AdminDaoImpl implements AdminDao {
 		tr.commit();
 		return login;
 	}
-		
-		
-
 }

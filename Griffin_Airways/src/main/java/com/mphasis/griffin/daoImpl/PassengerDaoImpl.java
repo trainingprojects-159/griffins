@@ -8,6 +8,8 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mphasis.griffin.customexceptions.BuissnessException;
+import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.PassengerDao;
 import com.mphasis.griffin.entities.PassengerInfo;
 
@@ -16,7 +18,7 @@ public class PassengerDaoImpl implements PassengerDao {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	public void insertPassenger(PassengerInfo p) {
+	public void insertPassenger(PassengerInfo p) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		session.save(p);
@@ -24,7 +26,7 @@ public class PassengerDaoImpl implements PassengerDao {
 
 	}
 
-	public void updatePassenger(PassengerInfo p) {
+	public void updatePassenger(PassengerInfo p) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		session.update(p);
@@ -32,7 +34,7 @@ public class PassengerDaoImpl implements PassengerDao {
 
 	}
 
-	public void deletePassenger(String passId) {
+	public void deletePassenger(String passId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		PassengerInfo p = (PassengerInfo) session.get(PassengerInfo.class, passId);
@@ -41,7 +43,7 @@ public class PassengerDaoImpl implements PassengerDao {
 
 	}
 
-	public List<PassengerInfo> getAllPassenger() {
+	public List<PassengerInfo> getAllPassenger() throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		List<PassengerInfo> passenger = session.createQuery("from PassengerInfo",PassengerInfo.class).list();
@@ -50,11 +52,10 @@ public class PassengerDaoImpl implements PassengerDao {
 
 	}
 
-	public PassengerInfo getPassengerById(String passId) {
+	public PassengerInfo getPassengerById(String passId) throws BusinessException {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
 		PassengerInfo p = (PassengerInfo) session.get(PassengerInfo.class, passId);
-
 		tr.commit();
 		return p;
 
