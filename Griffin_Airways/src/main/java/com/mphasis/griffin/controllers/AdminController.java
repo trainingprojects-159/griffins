@@ -21,6 +21,7 @@ import com.mphasis.griffin.service.FlightService;
 import com.mphasis.griffin.service.LocationService;
 import com.mphasis.griffin.service.RouteService;
 import com.mphasis.griffin.service.ScheduleService;
+import com.mphasis.griffin.service.TicketInfoService;
 
 @RestController
 @RequestMapping("/admin")
@@ -40,7 +41,10 @@ public class AdminController {
 
 	@Autowired
 	ScheduleService scheduleService;
-
+    
+	@Autowired
+	TicketInfoService ticketInfoService;
+	
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
 	}
@@ -192,6 +196,11 @@ public class AdminController {
 		return this.scheduleService.getById(scheId);
 	}
 	
+	// ---------TiccketInfo-----------------//
 	
+	@RequestMapping(value = "/ticketInfo/{ticketId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public void cancelTicket(String ticketId) {
+		this.ticketInfoService.modifyTicket(ticketId);
+	}
 
 }
