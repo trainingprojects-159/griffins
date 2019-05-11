@@ -73,6 +73,13 @@ public class UserController {
 		Customers signin = customerService.signIn(email, password);
 		return signin;
 	}
+	
+	//----------------retrinal according to date,source and destination--------//
+	@RequestMapping(value ="/getFlightDetails/{source}/{destination}/(scheduleDate}",method = RequestMethod.GET)
+	public List<Flight> getFlightDetails(@PathVariable("source")String source, @PathVariable("destination")String destination,@PathVariable("scheduleDate")String scheduleDate){
+	return this.customerService.retriveFlightDetails(source, destination, scheduleDate);	
+	}
+	
 
 	// ---------Passenger-----------------//
 
