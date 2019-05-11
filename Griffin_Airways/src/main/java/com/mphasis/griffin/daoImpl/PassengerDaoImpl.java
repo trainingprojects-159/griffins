@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mphasis.griffin.customexceptions.BuissnessException;
 import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.PassengerDao;
 import com.mphasis.griffin.entities.PassengerInfo;
