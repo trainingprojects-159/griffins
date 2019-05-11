@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-import org.hibernate.engine.internal.Cascade;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
 @Entity
@@ -35,6 +35,7 @@ public class Customers {
 	private String password;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<TicketInfo> ticketInfo;
 
 	public List<TicketInfo> getTicketInfo() {

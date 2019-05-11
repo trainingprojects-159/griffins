@@ -7,13 +7,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
 @Entity
@@ -45,6 +45,7 @@ public class Flight {
 	private Route route;
 	
 	@OneToMany(mappedBy = "flight",fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Schedule> schedule;
 	
 	@ManyToOne

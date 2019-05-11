@@ -1,4 +1,4 @@
-package com.mphasis.griffin.testcasesfordaoimpl;
+package com.mphasis.griffin.testcasesdaoimpl;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class FlightDaoImplTest {
+public class TestAdminDaoImpl {
 
 	@Before
 	public void setUp() throws Exception {

@@ -7,14 +7,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
 @Entity
@@ -39,9 +38,11 @@ public class Route {
 	private int cost;
 
 	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Flight> flight;
 	
 	@OneToMany(mappedBy = "route")
+	@JsonIgnore
 	private List<Schedule> schedule;
 
 	@ManyToOne
