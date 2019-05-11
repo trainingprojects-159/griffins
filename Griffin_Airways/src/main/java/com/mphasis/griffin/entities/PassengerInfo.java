@@ -34,7 +34,6 @@ public class PassengerInfo {
 	private String passport;
 	
 	@OneToOne
-	@JoinColumn(name="scheduleId")
 	private Schedule scheId;
 	
 	public String getPassId() {

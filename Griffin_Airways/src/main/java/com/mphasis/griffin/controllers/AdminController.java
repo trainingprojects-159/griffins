@@ -191,5 +191,7 @@ public class AdminController {
 	public Schedule getScheduleById(@PathVariable("scheId") String scheId) {
 		return this.scheduleService.getById(scheId);
 	}
+	
+	
 
 }

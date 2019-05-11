@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,10 +35,15 @@ public class CustomersDaoImpl implements CustomersDao{
 	public List<Flight> getFlightDetails(String source, String destination, String scheduleDate) {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
-		List<Flight> flights=session.createNativeQuery("select * from flight where flightId in "
+		NativeQuery<Flight> query=(NativeQuery<Flight>) session.createNativeQuery("select * from flight where flightId in "
 				+ "(select flightId from schedule where scheDate=:schedule_Date and routeId ="
 				+ "(select routeId from route where source =(select locId from location where locName=:source) and destination="
 				+ "(select locId from location where locName=:destination))))").list();
+		query.setParameter("schedule_Date", scheduleDate);
+		query.setParameter("source", source);
+		query.setParameter("destination", destination);
+		List<Flight> flights=query.getResultList();
+		
 		return flights;
 //		TypedQuery<Location> query1=session.createQuery("from Location where locName=:source");
 //		query1.setParameter("source", source);

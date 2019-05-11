@@ -31,9 +31,17 @@ public class Flight {
 	private String fname;
 	private int reserveSeat;
 	private int seatCap;
+	private String flightType;
 	
+	public String getFlightType() {
+		return flightType;
+	}
+
+	public void setFlightType(String flightType) {
+		this.flightType = flightType;
+	}
+
 	@ManyToOne
-	@JoinColumn(name = "routeId")
 	private Route route;
 	
 	@OneToMany(mappedBy = "flight",fetch=FetchType.LAZY)

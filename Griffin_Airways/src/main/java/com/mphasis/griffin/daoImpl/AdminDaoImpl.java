@@ -4,6 +4,7 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,12 +20,16 @@ public class AdminDaoImpl implements AdminDao {
 		this.sessionFactory = sessionFactory;
 	}
 	public Admin login(String userId, String password) {
-		Session session=sessionFactory.getCurrentSession();
+		Session session=sessionFactory.openSession();
+		Transaction tr=session.beginTransaction();
 		TypedQuery<Admin> query = session.createQuery("from SignIn where userId=:userId and password=:password");
 		query.setParameter("userId", userId);
 		query.setParameter("password", password);
 		Admin login=(Admin) query.getSingleResult();
+		tr.commit();
 		return login;
 	}
+		
+		
 
 }

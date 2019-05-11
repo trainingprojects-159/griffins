@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -23,22 +24,44 @@ public class TicketInfo {
 	private String ticketId;
 	private int paymentId;
 	private String seatInfo;
-	private String passId;
-
+	
+	
+	@OneToOne
+	private PassengerInfo passengerInfo;
+	
+	@OneToOne
+	private Schedule schedule;
+	
 	@ManyToOne
-	@JoinColumn(name = "userId")
 	private Customers customer;
 
-	public String getPassId() {
-		return passId;
-	}
-
-	public void setPassId(String passId) {
-		this.passId = passId;
-	}
-
-	private String scheId;
 	private String status;
+
+	public PassengerInfo getPassengerInfo() {
+		return passengerInfo;
+	}
+
+	public void setPassengerInfo(PassengerInfo passengerInfo) {
+		this.passengerInfo = passengerInfo;
+	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
+
+	public Customers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customers customer) {
+		this.customer = customer;
+	}
+
+
 
 	public String getTicketId() {
 		return ticketId;
@@ -64,21 +87,9 @@ public class TicketInfo {
 		this.seatInfo = seatInfo;
 	}
 
-	public String getPassengerId() {
-		return passId;
-	}
+	
 
-	public void setPassengerId(String passengerId) {
-		this.passId = passengerId;
-	}
-
-	public String getScheId() {
-		return scheId;
-	}
-
-	public void setScheId(String scheId) {
-		this.scheId = scheId;
-	}
+	
 
 	public String getStatus() {
 		return status;
@@ -91,7 +102,7 @@ public class TicketInfo {
 	@Override
 	public String toString() {
 		return "TicketInfo [ticketId=" + ticketId + ", paymentId=" + paymentId + ", seatInfo=" + seatInfo
-				+ ", passengerId=" + passId + ", scheId=" + scheId + ", status=" + status + "]";
+				+", status=" + status + "]";
 	}
 
 }

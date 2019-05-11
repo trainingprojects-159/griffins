@@ -1,5 +1,6 @@
 package com.mphasis.griffin.dao;
 
+
 import com.mphasis.griffin.entities.Admin;
 
 public interface AdminDao {

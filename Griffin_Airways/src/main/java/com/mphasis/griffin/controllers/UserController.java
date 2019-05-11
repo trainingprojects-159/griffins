@@ -14,18 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mphasis.griffin.entities.PassengerInfo;
 import com.mphasis.griffin.entities.Schedule;
 import com.mphasis.griffin.entities.TicketInfo;
-import com.mphasis.griffin.entities.FlightUser;
 import com.mphasis.griffin.service.PassengerService;
 import com.mphasis.griffin.service.ScheduleService;
 import com.mphasis.griffin.service.TicketInfoService;
-import com.mphasis.griffin.service.FlightUserService;
+
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
-	@Autowired
-	FlightUserService flightUserService;
 
 	@Autowired
 	PassengerService passengerService;
@@ -36,10 +32,6 @@ public class UserController {
 	@Autowired
 	TicketInfoService ticketInfoService;
 
-	public void setFlightUserService(FlightUserService flightUserService) {
-		this.flightUserService = flightUserService;
-	}
-
 	public void setPassengerService(PassengerService passengerService) {
 		this.passengerService = passengerService;
 	}
@@ -47,16 +39,6 @@ public class UserController {
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
-
-	// ---------FlightUser-----------------//
-
-	@RequestMapping(value = "/signIn/{email}/{password}", method = RequestMethod.GET)
-	public FlightUser signin(@PathVariable("email") String email, @PathVariable("password") String password) {
-		FlightUser signin = flightUserService.signIn(email, password);
-		return signin;
-	}
-
-	// ---------PassengerInfo-----------------//
 
 	@RequestMapping(value = "/passengers", method = RequestMethod.GET)
 	public List<PassengerInfo> listPassenger() {
@@ -89,7 +71,6 @@ public class UserController {
 		return this.passengerService.getPassengerById(passId);
 	}
 
-	// ---------Schedule-----------------//
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Schedule> listschedules() {
@@ -101,7 +82,7 @@ public class UserController {
 		return this.scheduleService.getById(scheId);
 	}
 
-	// ---------TicketInfo-----------------//
+
 
 	@RequestMapping(value = "/ticketInfo/add", method = RequestMethod.POST)
 	public TicketInfo bookTicket(TicketInfo ticketInfo) {

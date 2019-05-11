@@ -24,11 +24,9 @@ public class Schedule {
 	private String scheDate;
 
 	@ManyToOne
-	@JoinColumn(name = "flightId")
 	private Flight flight;
 
 	@ManyToOne
-	@JoinColumn(name = "routeId")
 	private Route route;
 
 	@ManyToOne

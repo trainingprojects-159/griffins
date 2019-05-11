@@ -1,5 +1,7 @@
 package com.mphasis.griffin.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +35,15 @@ public class Customers {
 	private String password;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private TicketInfo ticketInfo;
+	private List<TicketInfo> ticketInfo;
+
+	public List<TicketInfo> getTicketInfo() {
+		return ticketInfo;
+	}
+
+	public void setTicketInfo(List<TicketInfo> ticketInfo) {
+		this.ticketInfo = ticketInfo;
+	}
 
 	public String getUserId() {
 		return userId;

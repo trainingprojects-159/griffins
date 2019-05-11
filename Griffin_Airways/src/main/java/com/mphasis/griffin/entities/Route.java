@@ -29,11 +29,9 @@ public class Route {
 	private String routeId;
 
 	@ManyToOne
-	@JoinColumn(name = "sourceId")
 	private Location source;
 
 	@ManyToOne
-	@JoinColumn(name = "destinationId")
 	private Location destination;
 
 	private int distance;
@@ -43,15 +41,11 @@ public class Route {
 	@OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
 	private List<Flight> flight;
 	
-	@OneToMany(mappedBy = "schedule")
+	@OneToMany(mappedBy = "route")
 	private List<Schedule> schedule;
 
 	@ManyToOne
 	private Admin admin;
-	
-	@OneToOne
-	@JoinColumn(name="locId")
-	private Location location;
 
 	public String getRouteId() {
 		return routeId;
@@ -125,19 +119,13 @@ public class Route {
 		this.admin = admin;
 	}
 
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Route [routeId=" + routeId + ", source=" + source + ", destination=" + destination + ", distance="
 				+ distance + ", duration=" + duration + ", cost=" + cost + ", flight=" + flight + ", schedule="
-				+ schedule + ", admin=" + admin + ", location=" + location + "]";
+				+ schedule + ", admin=" + admin +  "]";
 	}
 
 	

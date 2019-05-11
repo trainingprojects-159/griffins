@@ -2,19 +2,28 @@ package com.mphasis.griffin.configurations;
 
 import java.util.Properties;
 
-import org.hibernate.SessionFactory;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
+
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.mphasis.griffin.entities.Admin;
+import com.mphasis.griffin.entities.Customers;
+import com.mphasis.griffin.entities.Flight;
+import com.mphasis.griffin.entities.Location;
+import com.mphasis.griffin.entities.PassengerInfo;
+import com.mphasis.griffin.entities.Route;
+import com.mphasis.griffin.entities.Schedule;
+import com.mphasis.griffin.entities.TicketInfo;
 
 @Configuration
 @EnableWebMvc
@@ -38,15 +47,14 @@ public class AppConfig {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(getDataSource());
 		sessionFactory.setPackagesToScan("com.mphasis.griffin.entities");
-		// sessionFactory.setAnnotatedClasses(Admin.class);
-		// sessionFactory.setAnnotatedClasses(Customer.class);
-		// sessionFactory.setAnnotatedClasses(Flight.class );
-		// sessionFactory.setAnnotatedClasses(Location.class );
-		// sessionFactory.setAnnotatedClasses(PassengerInfo.class );
-		// sessionFactory.setAnnotatedClasses(Route.class );
-		// sessionFactory.setAnnotatedClasses(Schedule.class );
-		// sessionFactory.setAnnotatedClasses(SignIn.class );
-		// sessionFactory.setAnnotatedClasses(TicketInfo.class );
+		 sessionFactory.setAnnotatedClasses(Admin.class);
+		 sessionFactory.setAnnotatedClasses(Customers.class);
+		 sessionFactory.setAnnotatedClasses(Flight.class );
+		 sessionFactory.setAnnotatedClasses(Location.class );
+		 sessionFactory.setAnnotatedClasses(PassengerInfo.class );
+		 sessionFactory.setAnnotatedClasses(Route.class );
+		 sessionFactory.setAnnotatedClasses(Schedule.class );
+		 sessionFactory.setAnnotatedClasses(TicketInfo.class );
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
 		properties.put("hibernate.hbm2ddl.auto", "update");
@@ -57,13 +65,7 @@ public class AppConfig {
 
 	}
 
-	@Bean
-	public HibernateTransactionManager getHibernateTransactionManger(SessionFactory s) {
-		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
-		hibernateTransactionManager.setSessionFactory(s);
-		return hibernateTransactionManager;
-
-	}
+	
 
 	@Bean
 	public WebMvcConfigurer corsConfigure() {
