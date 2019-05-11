@@ -71,7 +71,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/login/{userId}/{password}", method = RequestMethod.GET)
 	public Admin login(@PathVariable("userId") String userId, @PathVariable("password") String password) throws BusinessException {
-		if(userId!=null&&password!=null)
+		if(userId!=null && password!=null)
 		{
 		Admin admin = adminService.login(userId, password);
 		return admin;

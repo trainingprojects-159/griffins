@@ -22,7 +22,12 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	public Customers signIn(String email, String password) throws BusinessException {
-		
+		Customers customer;
+		if(email != null && email.matches("[a-zA-Z0-9]{4,15}@gmail.com"))
+		{
+		} else if(password != null && password.matches("^(?=.*\\\\d).{4,8}$"))
+		{
+		}
 		return customersDao.signIn(email, password);
 	}
 	

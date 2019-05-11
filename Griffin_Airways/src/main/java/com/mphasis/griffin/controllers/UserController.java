@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.griffin.customexceptions.BusinessException;
+
 import com.mphasis.griffin.entities.Customers;
 import com.mphasis.griffin.entities.Flight;
 import com.mphasis.griffin.entities.PassengerInfo;
@@ -58,13 +59,13 @@ public class UserController {
 		this.ticketInfoService = ticketInfoService;
 	}
 
-	// ---------Customer-----------------//
+	// ---------Flight-----------------//
 
 	public void setFlightService(FlightService flightService) {
 		this.flightService = flightService;
 	}
 
-	@RequestMapping(value = "regiser", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register(@RequestBody Customers customers) throws BusinessException {
 		this.customerService.register(customers);
 	}
@@ -72,8 +73,13 @@ public class UserController {
 	@RequestMapping(value = "/signIn/{email}/{password}", method = RequestMethod.GET)
 	public Customers signin(@PathVariable("email") String email, @PathVariable("password") String password)
 			throws BusinessException {
-		Customers signin = customerService.signIn(email, password);
-		return signin;
+		if(email!=null && password!=null) {
+		Customers customer = customerService.signIn(email, password);	
+		return customer;
+		}
+		else {
+	 throw new BusinessException("Invalid Details");
+	}
 	}
 
 	@RequestMapping(value = "/getFlightDetails/{source}/{destination}/(scheduleDate}", method = RequestMethod.GET)
