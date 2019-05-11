@@ -1,13 +1,13 @@
 package com.mphasis.griffin.customexceptions;
 
-public class BuissnessException extends Exception {
+public class BusinessException extends Exception {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public BuissnessException(String message) {
+	public BusinessException(String message) {
 		super(message);
 	}
 

@@ -6,7 +6,7 @@ import com.mphasis.griffin.entities.Location;
 
 public interface LocationService {
 
-	public void addLocation(Location location);
+	public void addLocation(Location location)throws ;
 
 	public void removeLocation(String locId);
 
