@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.griffin.customexceptions.BusinessException;
@@ -65,13 +64,22 @@ public class AdminController {
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
+	@Autowired
+	BusinessException businessException;
 
 	// ---------Admin-----------------//
 
 	@RequestMapping(value = "/login/{userId}/{password}", method = RequestMethod.GET)
 	public Admin login(@PathVariable("userId") String userId, @PathVariable("password") String password) throws BusinessException {
+		if(userId!=null&&password!=null)
+		{
 		Admin admin = adminService.login(userId, password);
 		return admin;
+		}
+		else
+		{
+			throw new BusinessException("Wrong Credentials");
+		}
 	}
 
 	// ---------Flight-----------------//
