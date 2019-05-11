@@ -12,22 +12,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mphasis.griffin.entities.Customers;
+import com.mphasis.griffin.entities.Flight;
 import com.mphasis.griffin.entities.PassengerInfo;
 import com.mphasis.griffin.entities.Schedule;
 import com.mphasis.griffin.entities.TicketInfo;
 import com.mphasis.griffin.service.CustomerService;
+import com.mphasis.griffin.service.FlightService;
 import com.mphasis.griffin.service.PassengerService;
 import com.mphasis.griffin.service.ScheduleService;
 import com.mphasis.griffin.service.TicketInfoService;
 
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	CustomerService customerService;
-	
+
 	@Autowired
 	PassengerService passengerService;
 
@@ -36,8 +37,9 @@ public class UserController {
 
 	@Autowired
 	TicketInfoService ticketInfoService;
-	
-	
+
+	@Autowired
+	FlightService flightService;
 
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
@@ -50,14 +52,18 @@ public class UserController {
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
-	
+
 	public void setTicketInfoService(TicketInfoService ticketInfoService) {
 		this.ticketInfoService = ticketInfoService;
 	}
-	
+
 	// ---------Customer-----------------//
 
-	@RequestMapping(value="regiser", method = RequestMethod.GET)
+	public void setFlightService(FlightService flightService) {
+		this.flightService = flightService;
+	}
+
+	@RequestMapping(value = "regiser", method = RequestMethod.GET)
 	public void register(@RequestBody Customers customers) {
 		this.customerService.register(customers);
 	}
@@ -133,6 +139,18 @@ public class UserController {
 	@RequestMapping(value = "/ticketInfos", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TicketInfo> listTicketInfo() {
 		return ticketInfoService.getAll();
+	}
+
+	// ---------Flight-----------------//
+
+	@RequestMapping(value = "/flight/{flightid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Flight getFlightById(@PathVariable("flightid") String flightid) {
+		return this.flightService.getByIdFlight(flightid);
+	}
+
+	@RequestMapping(value = "/flights", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> listFlight() {
+		return flightService.getAll();
 	}
 
 }
