@@ -19,8 +19,15 @@ public class CustomerServiceImpl implements CustomerService{
 	public void register(Customers customers) {
 		customersDao.register(customers);
 	}
+	
+	public Customers signIn(String email, String password) {
+		
+		return customersDao.signIn(email, password);
+	}
+	
 	public List<Flight> retriveFlightDetails(String source, String destination, String scheduleDate) {
 		return customersDao.getFlightDetails(source, destination, scheduleDate);
 	
-	}	
+	}
+	
 }

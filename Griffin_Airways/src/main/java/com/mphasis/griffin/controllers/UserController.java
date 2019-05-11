@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mphasis.griffin.entities.Customers;
 import com.mphasis.griffin.entities.PassengerInfo;
 import com.mphasis.griffin.entities.Schedule;
 import com.mphasis.griffin.entities.TicketInfo;
+import com.mphasis.griffin.service.CustomerService;
 import com.mphasis.griffin.service.PassengerService;
 import com.mphasis.griffin.service.ScheduleService;
 import com.mphasis.griffin.service.TicketInfoService;
@@ -22,7 +24,10 @@ import com.mphasis.griffin.service.TicketInfoService;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+	
+	@Autowired
+	CustomerService customerService;
+	
 	@Autowired
 	PassengerService passengerService;
 
@@ -31,6 +36,12 @@ public class UserController {
 
 	@Autowired
 	TicketInfoService ticketInfoService;
+	
+	
+
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
 
 	public void setPassengerService(PassengerService passengerService) {
 		this.passengerService = passengerService;
@@ -39,6 +50,25 @@ public class UserController {
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
+	
+	public void setTicketInfoService(TicketInfoService ticketInfoService) {
+		this.ticketInfoService = ticketInfoService;
+	}
+	
+	// ---------Customer-----------------//
+
+	@RequestMapping(value="regiser", method = RequestMethod.GET)
+	public void register(@RequestBody Customers customers) {
+		this.customerService.register(customers);
+	}
+
+	@RequestMapping(value = "/signIn/{email}/{password}", method = RequestMethod.GET)
+	public Customers signin(@PathVariable("email") String email, @PathVariable("password") String password) {
+		Customers signin = customerService.signIn(email, password);
+		return signin;
+	}
+
+	// ---------Passenger-----------------//
 
 	@RequestMapping(value = "/passengers", method = RequestMethod.GET)
 	public List<PassengerInfo> listPassenger() {
@@ -71,6 +101,7 @@ public class UserController {
 		return this.passengerService.getPassengerById(passId);
 	}
 
+	// ---------Schedule-----------------//
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Schedule> listschedules() {
@@ -82,7 +113,7 @@ public class UserController {
 		return this.scheduleService.getById(scheId);
 	}
 
-
+	// ---------TicketInfo-----------------//
 
 	@RequestMapping(value = "/ticketInfo/add", method = RequestMethod.POST)
 	public TicketInfo bookTicket(TicketInfo ticketInfo) {

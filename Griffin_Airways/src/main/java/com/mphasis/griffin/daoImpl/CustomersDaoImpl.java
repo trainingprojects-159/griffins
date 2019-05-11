@@ -2,7 +2,7 @@ package com.mphasis.griffin.daoImpl;
 
 import java.util.List;
 
-
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +32,16 @@ public class CustomersDaoImpl implements CustomersDao{
 		tr.commit();
 		session.close();
 	}
+	
+	public Customers signIn(String email, String password) {
+		Session session=sessionFactory.getCurrentSession();
+		TypedQuery query=session.createQuery("from Customers where email=:email and password=:password");
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		Customers signIn=(Customers) query.getSingleResult();
+		return signIn;
+	}
+	
 	public List<Flight> getFlightDetails(String source, String destination, String scheduleDate) {
 		Session session = sessionFactory.openSession();
 		Transaction tr = session.beginTransaction();
@@ -76,4 +86,5 @@ public class CustomersDaoImpl implements CustomersDao{
 		
         
 	}
+	
 }
