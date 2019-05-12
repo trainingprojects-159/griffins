@@ -9,14 +9,15 @@ import com.mphasis.griffin.customexceptions.BusinessException;
 import com.mphasis.griffin.dao.RouteDao;
 import com.mphasis.griffin.entities.Route;
 import com.mphasis.griffin.service.RouteService;
+
 @Service
 public class RouteServiceImpl implements RouteService {
-@Autowired
-    RouteDao routeDao;
+	@Autowired
+	RouteDao routeDao;
 
 	public void setRouteDao(RouteDao routeDao) {
-	this.routeDao = routeDao;
-}
+		this.routeDao = routeDao;
+	}
 
 	public void addRoute(Route route) throws BusinessException {
 		routeDao.insertRoute(route);
@@ -29,17 +30,17 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	public void editRoute(Route route) throws BusinessException {
-	    routeDao.updateRoute(route);
+		routeDao.updateRoute(route);
 
 	}
 
 	public Route getByIdRoute(String routeid) throws BusinessException {
-		
+
 		return routeDao.getRouteById(routeid);
 	}
 
 	public List<Route> getAll() throws BusinessException {
-		
+
 		return routeDao.getAll();
 	}
 

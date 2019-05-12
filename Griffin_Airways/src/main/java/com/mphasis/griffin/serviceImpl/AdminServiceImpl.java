@@ -17,11 +17,11 @@ public class AdminServiceImpl implements AdminService {
 	public void setAdminDao(AdminDao adminDao) {
 		this.adminDao = adminDao;
 	}
-	
+
 	Admin admin = null;
-	
+
 	public Admin login(String userId, String password) throws BusinessException {
-		
+
 		if (userId != null && userId.matches("[a-zA-Z0-9]{4,15}@gmail.com")) {
 
 		} else if (password != null && password.matches("^(?=.*\\d).{4,8}$")) {

@@ -12,28 +12,29 @@ import com.mphasis.griffin.entities.Flight;
 import com.mphasis.griffin.service.CustomerService;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
-	
+public class CustomerServiceImpl implements CustomerService {
+
 	@Autowired
 	CustomersDao customersDao;
 
 	public void register(Customers customers) throws BusinessException {
 		customersDao.register(customers);
 	}
-	
+
+	Customers customer = null;
+
 	public Customers signIn(String email, String password) throws BusinessException {
-		Customers customer;
-		if(email != null && email.matches("[a-zA-Z0-9]{4,15}@gmail.com"))
-		{
-		} else if(password != null && password.matches("^(?=.*\\\\d).{4,8}$"))
-		{
+
+		if (email != null && email.matches("[a-zA-Z0-9]{4,15}@gmail.com")) {
+		} else if (password != null && password.matches("^(?=.*\\\\d).{4,8}$")) {
 		}
 		return customersDao.signIn(email, password);
 	}
-	
-	public List<Flight> retriveFlightDetails(String source, String destination, String scheduleDate) throws BusinessException {
+
+	public List<Flight> retriveFlightDetails(String source, String destination, String scheduleDate)
+			throws BusinessException {
 		return customersDao.getFlightDetails(source, destination, scheduleDate);
-	
+
 	}
-	
+
 }

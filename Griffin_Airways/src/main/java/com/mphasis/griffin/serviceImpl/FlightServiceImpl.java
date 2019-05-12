@@ -19,7 +19,7 @@ public class FlightServiceImpl implements FlightService {
 		this.flightDao = flightDao;
 	}
 
-	public void addFlight(Flight flight) throws BusinessException{
+	public void addFlight(Flight flight) throws BusinessException {
 		System.out.println("Flight values in service" + flight.getFname());
 		flightDao.insertFlight(flight);
 	}
@@ -29,7 +29,7 @@ public class FlightServiceImpl implements FlightService {
 
 	}
 
-	public void editFlight(Flight flight) throws BusinessException{
+	public void editFlight(Flight flight) throws BusinessException {
 		flightDao.updateFlight(flight);
 
 	}
@@ -38,7 +38,7 @@ public class FlightServiceImpl implements FlightService {
 		return flightDao.getFlightById(flightid);
 	}
 
-	public List<Flight> getAll() throws BusinessException{
+	public List<Flight> getAll() throws BusinessException {
 
 		return flightDao.getAll();
 	}

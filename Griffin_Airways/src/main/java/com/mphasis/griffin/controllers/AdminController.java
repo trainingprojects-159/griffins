@@ -64,8 +64,6 @@ public class AdminController {
 	public void setScheduleService(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
-	@Autowired
-	BusinessException businessException;
 
 	// ---------Admin-----------------//
 
