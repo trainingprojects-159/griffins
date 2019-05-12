@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mphasis.griffin.util.StringPrefixedSequenceIdGenerator;
 
@@ -25,7 +24,6 @@ public class Customers {
 			@Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "CU"),
 			@Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d") })
 	private String userId;
-	
 	private String uname;
 	private String address;
 	private String gender;
