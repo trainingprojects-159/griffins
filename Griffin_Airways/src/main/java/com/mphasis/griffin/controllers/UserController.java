@@ -59,11 +59,11 @@ public class UserController {
 		this.ticketInfoService = ticketInfoService;
 	}
 
-	// ---------Flight-----------------//
-
 	public void setFlightService(FlightService flightService) {
 		this.flightService = flightService;
 	}
+	
+	// ---------Customer-----------------//
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register(@RequestBody Customers customers) throws BusinessException {
@@ -100,20 +100,17 @@ public class UserController {
 
 	@RequestMapping(value = "/passenger/add", method = RequestMethod.POST)
 	public void addPassenger(@RequestBody PassengerInfo p) throws BusinessException {
-
 		this.passengerService.addPassenger(p);
 	}
 
 	@RequestMapping(value = "/passenger/{passId}", method = RequestMethod.DELETE)
-
 	public void removePassenger(@PathVariable("passId") String passId) throws BusinessException {
-
 		this.passengerService.removePassenger(passId);
 
 	}
 
 	@RequestMapping(value = "/passenger/{passId}", method = RequestMethod.PUT)
-	public void editEmployee(@PathVariable("passId") String passId, @RequestBody PassengerInfo p)
+	public void editPassenger(@PathVariable("passId") String passId, @RequestBody PassengerInfo p)
 			throws BusinessException {
 		this.passengerService.updatePassenger(p);
 	}
