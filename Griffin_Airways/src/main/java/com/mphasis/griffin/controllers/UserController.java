@@ -87,7 +87,7 @@ public class UserController {
 			@PathVariable("destination") String destination, @PathVariable("scheduleDate") String scheduleDate)
 			throws BusinessException {
 		return this.customerService.retriveFlightDetails(source, destination, scheduleDate);
-	}
+	}                                                                    
 
 	// ---------Passenger-----------------//
 
