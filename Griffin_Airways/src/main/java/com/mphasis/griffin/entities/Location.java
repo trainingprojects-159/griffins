@@ -26,8 +26,8 @@ public class Location {
 	@ManyToOne
 	private Admin admin;
 
-	@OneToOne
-	private Route route;
+	/*@OneToOne
+	private Route route;*/
 
 	public String getLocId() {
 		return locId;
@@ -53,17 +53,19 @@ public class Location {
 		this.admin = admin;
 	}
 
-	public Route getRoute() {
+	@Override
+	public String toString() {
+		return "Location [locId=" + locId + ", locName=" + locName + ", admin=" + admin + "]";
+	}
+
+	/*public Route getRoute() {
 		return route;
 	}
 
 	public void setRoute(Route route) {
 		this.route = route;
-	}
+	}*/
 
-	@Override
-	public String toString() {
-		return "Location [locId=" + locId + ", locName=" + locName + ", admin=" + admin + ", route=" + route + "]";
-	}
+	
 
 }
