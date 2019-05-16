@@ -1,0 +1,29 @@
+<form #loactionForm="ngForm"(ngSubmit)="saveLocation()">
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Location</h3>
+    </div>
+  
+    <div class="panel-body">
+      <div class="form-group">
+  <label for="locId">Loc ID</label>
+  <input id="locId" type="text" name="locId"
+  [(ngModel)]="location.locId">
+  </div>
+  <br/>
+  
+      <div class="form-group">
+  <label for="locName">Loc Name</label>
+  <input id="locName"type="text" name="locName"
+  [(ngModel)]="location.locName">
+  </div>
+  <br/>
+  
+     
+  
+    </div>
+  <button type="submit" class="btn btn-primary">
+    Save
+  </button>
+  </div> 
+  </form>

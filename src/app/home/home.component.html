@@ -1,12 +1,31 @@
 <div style="padding: 20px;">
-	<h2 style="color: blue">Welcome</h2>
-	<nav>
-    <a routerLink="bookTicket" class="btn btn-primary active"role="button" routerLinkActive="active">Book Ticket</a>
-    <a routerLink="viewBookedTicket"	class="btn btn-primary active"role="button" routerLinkActive="active">View Ticket</a>
-    <a routerLink="addPassenger"	class="btn btn-primary active"role="button" routerLinkActive="active">Add Passenger</a>
-    <a routerLink="update/:id"	class="btn btn-primary active"role="button" routerLinkActive="active">Edit Passenger</a>
-    <a routerLink="getFlightDetails"	class="btn btn-primary active"role="button" routerLinkActive="active">View Flights</a>
-  </nav>
-	<router-outlet></router-outlet>
-</div>
+    <h2 style="color: blue">Welcome </h2>
+    <nav>
+      <a routerLink="flight" 
+      class="btn btn-primary active" 
+      role="button" routerLinkActive="active">Flights</a>
+     
 
+  
+        <a routerLink="route" 
+      class="btn btn-primary active" 
+      role="button" routerLinkActive="active">Routes</a>
+     
+
+          <a routerLink="location" 
+        class="btn btn-primary active" 
+        role="button" routerLinkActive="active">Locations</a>
+       
+
+   
+            <a routerLink="schedule" 
+          class="btn btn-primary active" 
+          role="button" routerLinkActive="active">Schedules</a>
+          
+      
+              
+         
+          </nav>
+    <router-outlet></router-outlet>
+  </div>
+  

@@ -1,0 +1,26 @@
+<table border="1">
+    <tr>
+      <th>Schedule Id</th>
+      <th>Schedule Date</th>
+      <th>Flight</th>
+      <th>Route</th>
+      <th>Admin</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor='let schedule of schedules'>
+      <td>{{schedule.scheId}}</td>
+      <td>{{schedule.scheDate}}</td>
+      <td>{{schedule.flight.flightId}}</td>
+      <td>{{schedule.route.routeId}}</td>
+      <td>{{schedule.admin.userId}}</td>
+      <td><a class="btn btn-danger" routerLink='editSchedule'>Edit</a></td>
+     <td> <button class="btn btn-danger" (click)="delete(schedule.scheId)">Delete</button></td>
+    </tr>
+  </table>
+  
+  <a routerLink='/home/addschedule'>AddSchedule</a>
+  
+
+
+  

@@ -1,0 +1,19 @@
+<table border="1">
+    <tr>
+      <th>Location Id</th>
+      <th>Location Name</th>
+      <th>Admin</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor='let location of locations'>
+      <td>{{location.locId}}</td>
+      <td>{{location.locName}}</td>
+      <td>{{location.admin.userId}}</td>
+      <td><a class="btn btn-danger" routerLink='editLocation'>Edit</a></td>
+     <td> <button class="btn btn-danger" (click)="delete(location.locId)">Delete</button></td>
+    </tr>
+  </table>
+  
+  <a routerLink='/home/addlocation'>AddLocation</a>
+  

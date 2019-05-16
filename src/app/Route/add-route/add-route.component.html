@@ -1,0 +1,58 @@
+<form #routeForm="ngForm"(ngSubmit)="saveRoute()">
+    <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Route</h3>
+    </div>
+  
+    <div class="panel-body">
+      <div class="form-group">
+  <label for="routeId">Route ID</label>
+  <input id="routeId" type="text" name="routeId"
+  [(ngModel)]="route.routeId">
+  </div>
+  <br/>
+  
+      <div class="form-group">
+  <label for="source">Source</label>
+  <input id="source"type="text" name="source"
+  [(ngModel)]="route.source">
+  </div>
+  <br/>
+  
+  
+  
+      <div class="form-group">
+  <label for="destination">Destination</label>
+  <input id="destination"type="text" name="destination"
+  [(ngModel)]="route.destination">
+  </div>
+  <br/>
+  
+  
+      <div class="form-group">
+  <label for="distance">distance</label>
+  <input id="distance" type="text" name="distance"
+  [(ngModel)]="route.distance">
+  </div>
+  <br/>
+  
+  <div class="form-group">
+      <label for="duration">duration</label>
+      <input id="duration" type="text" name="duration"
+      [(ngModel)]="route.duration">
+      </div>
+      <br/>
+      
+      <div class="form-group">
+          <label for="cost">cost</label>
+          <input id="cost" type="text" name="cost"
+          [(ngModel)]="route.cost">
+          </div>
+          <br/>
+  
+    </div>
+  <button type="submit" class="btn btn-primary">
+    Save
+  </button>
+  </div> 
+  </form>

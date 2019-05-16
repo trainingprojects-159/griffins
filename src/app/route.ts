@@ -1,12 +1,13 @@
+import { Admin } from "./admin";
+import { Location } from "./location";
+
 export class Route {
-    routeId:string;
-    distance:Number;
-    duration:Number;
-    cost:Number;
+    routeId: string;
+    distance: number;
+    duration: number;
+    cost: number;
+    source: Location;
+    destination: Location;
+    //admin: Admin;
 
-    source:Location;
-    destination:Location;
-
-
-    
 }

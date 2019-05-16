@@ -1,0 +1,27 @@
+<table border="1">
+    <tr>
+      <th>Flight Id</th>
+      <th>Flight Name</th>
+      <th>seatcapacity</th>
+      <th>ReserveSeat</th>
+      <th>FlightType</th>
+      <th>Admin</th>
+      <th>RouteId</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor='let flight of flights'>
+      <td>{{flight.flightId}}</td>
+      <td>{{flight.fname}}</td>
+      <td>{{flight.seatCap}}</td>
+      <td>{{flight.reserveSeat}}</td>
+      <td>{{flight.flightType}}</td>
+      <td>{{flight.admin.userId}}</td>
+      <td>{{flight.route.routeId}}</td>
+      <td><a class="btn btn-danger" routerLink='/home/editflight/{{flight.flightId}}'>EditFlight</a></td>
+     <td> <button class="btn btn-danger" (click)="delete(flight.flightid)">Delete</button></td>
+    </tr>
+  </table>
+  
+  <a routerLink='/home/addflight'>AddFlight</a>
+  
